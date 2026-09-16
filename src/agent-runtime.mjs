@@ -6,7 +6,7 @@ import { evaluateApproval } from './approval-gate.mjs';
 export function dispatch(message, context = {}) {
   const routing = routeEnvelope(message);
   const approval = evaluateApproval(message, context.approval);
-  if (routing.status !== 'ACCEPTED' && !(routing.status === 'WAITING_APPROVAL' && approval.status === 'APPROVED')) return publish(context, message, { ...routing, ...approval, audit: audit(message, approval.status === 'WAITING_APPROVAL' ? approval.status : routing.status, routing.reason || 'APPROVAL_GATE') });
+  if (routing.status !== 'ACCEPTED' && !(routing.status === 'WAITING_APPROVAL' && approval.status === 'APPROVED')) return publish(context, message, { ...routing, audit: audit(message, routing.status, routing.reason || 'ROUTING_GATE') });
   if (approval.status === 'WAITING_APPROVAL' || approval.status === 'REJECTED') return publish(context, message, { ...approval, audit: audit(message, approval.status, 'APPROVAL_GATE') });
   if (message.intent !== 'VALIDATE_CHECKLIST' || !context.task || !context.nextStatus) {
     return { ...routing, audit: audit(message, routing.status, 'HANDOFF_ACCEPTED') };
