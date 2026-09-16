@@ -11,6 +11,7 @@ Los agentes no deben duplicar reglas dentro de sus prompts o handlers. Deben inv
 | Formación IA | `learning-rules.mjs` | Fuente, cambios y riesgo; publicación humana |
 | Payroll | `payroll-actions.mjs` | Revisar → aprobar → exportar |
 | Divisiones | `division-lifecycle.mjs` | `INFANTE` aprueba `PREPARED → ACTIVE` |
+| Integridad de datos | `data-integrity.mjs` | IDs y referencias operativas válidas |
 
 ## Política de ejecución
 
