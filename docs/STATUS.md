@@ -18,6 +18,10 @@
 - Integraciones simuladas.
 - Dashboard corporativo de INFANTE.
 - Workflow preparado para GitHub Pages.
+- Estado compartido entre vistas mediante `localStorage` y `BroadcastChannel`.
+- Runtime enlazado con `agent-config.json` y validación de topología por capas.
+- Matriz ejecutable de trazabilidad `RF-01` a `RF-20`.
+- Reglas operativas testeadas para fichaje, checklist e incidencias.
 
 ## No debe presentarse como producción
 
@@ -30,4 +34,7 @@
 
 ## Próxima prioridad técnica
 
-Conectar el estado central y los eventos de forma compartida entre todas las vistas, sustituir acciones simuladas por reglas reutilizables y validar RF-01 a RF-20 con una matriz ejecutable.
+1. Conectar las reglas de `src/worker-actions.mjs` directamente con la vista `worker.html` y eliminar sus handlers simulados duplicados.
+2. Persistir el estado en un backend con autenticación, autorización por división y control de concurrencia.
+3. Completar la aprobación real de horas antes de exportar payroll y añadir pruebas de recorrido en navegador.
+4. Activar `SECURITY`, `LANDSCAPING` y otras divisiones únicamente mediante una migración de configuración revisada por `INFANTE`.
