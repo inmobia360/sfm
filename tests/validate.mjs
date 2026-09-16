@@ -13,6 +13,7 @@ const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
 
 for (const file of required) check(existsSync(join(root, file)), `Falta archivo requerido: ${file}`);
+for (const file of ['.agents/CORP-GOVERNANCE.md', '.agents/CORP-DATA.md', '.agents/CORP-SECURITY.md', '.agents/CORP-INTEGRATIONS.md', '.agents/CORP-PROGRAM.md', '.agents/CORP-LEARNING.md', '.agents/CORP-QUALITY.md']) check(existsSync(join(root, file)), `Falta persona corporativa: ${file}`);
 const index = readFileSync(join(root, 'index.html'), 'utf8');
 const manifest = JSON.parse(readFileSync(join(root, 'demo-manifest.json'), 'utf8'));
 const config = JSON.parse(readFileSync(join(root, 'agent-config.json'), 'utf8'));
