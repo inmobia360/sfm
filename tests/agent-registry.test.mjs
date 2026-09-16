@@ -3,6 +3,7 @@ import { createAgentRegistry } from '../src/agent-registry.mjs';
 
 const registry = createAgentRegistry();
 assert.equal(registry.get('INFANTE').role, 'DIRECTOR');
+assert.equal(registry.all().length, 26);
 assert.equal(registry.forDivision('JANITORIAL').every(agent => agent.divisionId === 'JANITORIAL'), true);
 assert.equal(registry.forDivision('CORP').some(agent => agent.agentId === 'INFANTE'), true);
 registry.register({ agentId: 'SEC-OPERATIONS', role: 'SPECIALIST', divisionId: 'SECURITY', specialty: 'Rondas' });

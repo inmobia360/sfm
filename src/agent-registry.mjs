@@ -1,11 +1,9 @@
+const specialties = { INFANTE: 'Gobierno y priorización', JANITORIAL: 'Operación de servicios', 'JAN-QUALITY': 'Calidad e incidencias', 'JAN-ONBOARDING': 'Altas y onboarding', 'JAN-PAYROLL': 'Horas y exportación payroll', 'CORP-FINANCE': 'Presupuestos y control financiero' };
 const seed = [
-  { agentId: 'INFANTE', role: 'DIRECTOR', divisionId: 'CORP', specialty: 'Gobierno y priorización', status: 'ACTIVE' },
-  { agentId: 'JANITORIAL', role: 'CEO', divisionId: 'JANITORIAL', specialty: 'Operación de servicios', status: 'ACTIVE' },
-  { agentId: 'JAN-ONBOARDING', role: 'SPECIALIST', divisionId: 'JANITORIAL', specialty: 'Altas y onboarding', status: 'ACTIVE' },
-  { agentId: 'JAN-QUALITY', role: 'SPECIALIST', divisionId: 'JANITORIAL', specialty: 'Calidad e incidencias', status: 'ACTIVE' },
-  { agentId: 'JAN-PAYROLL', role: 'SPECIALIST', divisionId: 'JANITORIAL', specialty: 'Horas y exportación payroll', status: 'ACTIVE' },
-  { agentId: 'CORP-FINANCE', role: 'STAFF', divisionId: 'CORP', specialty: 'Presupuestos y control financiero', status: 'ACTIVE' }
-];
+  { agentId: 'INFANTE', role: 'DIRECTOR', divisionId: 'CORP' }, { agentId: 'JANITORIAL', role: 'CEO', divisionId: 'JANITORIAL' },
+  ...['JAN-ONBOARDING','JAN-QUALITY','JAN-PAYROLL','JAN-WORKFORCE','JAN-SCHEDULING','JAN-TIME','JAN-FINANCE','JAN-REPORTING','JAN-CLEANING','JAN-FLOORS','JAN-EVENTS','JAN-INCIDENTS','JAN-CONTRACTS','JAN-LEARNING','JAN-COPILOT'].map(agentId => ({ agentId, role: 'SPECIALIST', divisionId: 'JANITORIAL' })),
+  ...['CORP-HR','CORP-LEARNING','CORP-QUALITY','CORP-GOVERNANCE','CORP-DATA','CORP-SECURITY','CORP-INTEGRATIONS','CORP-PROGRAM','CORP-FINANCE'].map(agentId => ({ agentId, role: 'STAFF', divisionId: 'CORP' }))
+].map(agent => ({ ...agent, specialty: specialties[agent.agentId] || 'Especialidad declarada en agent-config.json', status: 'ACTIVE' }));
 
 export function createAgentRegistry(initial = seed) {
   const agents = new Map(initial.map(agent => [agent.agentId, { ...agent }]));
