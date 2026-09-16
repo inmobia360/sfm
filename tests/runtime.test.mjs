@@ -7,4 +7,5 @@ assert.equal(result.status, 'COMPLETED');
 assert.equal(result.task.status, 'PENDIENTE_DE_REVISION');
 assert.equal(result.audit.correlationId, 'FLOW-3');
 assert.equal(dispatch({ ...message, intent: 'UNKNOWN_INTENT' }).status, 'ESCALATED');
+assert.equal(dispatch({ ...message, intent: 'REQUEST_BUDGET', to: { agentId: 'CORP-FINANCE' }, scope: { divisionId: 'CORP' } }).status, 'WAITING_APPROVAL');
 console.log('RUNTIME TEST OK · handoff · tarea · auditoría');

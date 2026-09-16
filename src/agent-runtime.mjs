@@ -1,10 +1,13 @@
 import { routeEnvelope } from './agent-router.mjs';
 import { transitionTask } from './task-state.mjs';
 import { can } from './access-policy.mjs';
+import { evaluateApproval } from './approval-gate.mjs';
 
 export function dispatch(message, context = {}) {
   const routing = routeEnvelope(message);
   if (routing.status !== 'ACCEPTED') return { ...routing, audit: audit(message, routing.status, routing.reason || 'ROUTING_GATE') };
+  const approval = evaluateApproval(message, context.approval);
+  if (approval.status === 'WAITING_APPROVAL' || approval.status === 'REJECTED') return { ...approval, audit: audit(message, approval.status, 'APPROVAL_GATE') };
   if (message.intent !== 'VALIDATE_CHECKLIST' || !context.task || !context.nextStatus) {
     return { ...routing, audit: audit(message, routing.status, 'HANDOFF_ACCEPTED') };
   }

@@ -11,6 +11,7 @@ const routes = {
   REQUEST_BUDGET: 'CORP-FINANCE'
 };
 const routeDivisions = Object.fromEntries(Object.keys(routes).map(intent => [intent, 'JANITORIAL']));
+routeDivisions.REQUEST_BUDGET = 'CORP';
 const sensitive = new Set(['REQUEST_BUDGET', 'PREPARE_PAYROLL_EXPORT', 'APPROVE_CONTRACT', 'CHANGE_EMPLOYEE_STATUS']);
 
 export function routeEnvelope(message) {
