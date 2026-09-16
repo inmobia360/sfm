@@ -11,6 +11,7 @@ const required = [
 ];
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
+for (const file of ['src/worker-actions.mjs', 'src/payroll-actions.mjs', 'src/division-lifecycle.mjs', 'src/scheduling-rules.mjs', 'src/quality-rules.mjs', 'src/onboarding-rules.mjs', 'src/learning-rules.mjs', 'docs/agents/operational-rules.md', 'tests/requirements.test.mjs', 'tests/worker-actions.test.mjs', 'tests/payroll-actions.test.mjs', 'tests/division-lifecycle.test.mjs', 'tests/scheduling-rules.test.mjs', 'tests/quality-rules.test.mjs', 'tests/onboarding-rules.test.mjs', 'tests/learning-rules.test.mjs', 'tests/catalog-coherence.test.mjs']) check(existsSync(join(root, file)), `Falta artefacto de reglas o trazabilidad: ${file}`);
 
 for (const file of required) check(existsSync(join(root, file)), `Falta archivo requerido: ${file}`);
 check(existsSync(join(root, 'agent-roster.html')), 'Falta vista de roster de agentes');
