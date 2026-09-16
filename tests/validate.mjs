@@ -7,7 +7,7 @@ const required = [
   'training.html', 'report.html', 'audit.html', 'notifications.html', 'role-context.html',
   'integrations.html', 'app.js', 'data.js', 'demo-manifest.json',
   'docs/agents/constitution.md', 'docs/agents/authority-matrix.md',
-  'docs/agents/shared-state.md', 'docs/agents/role-enforcement.md', 'docs/agents/message-envelope.md', 'src/agent-envelope.mjs', 'src/agent-router.mjs', 'src/task-state.mjs', 'tests/envelope.test.mjs', 'tests/router.test.mjs', 'tests/task-state.test.mjs', 'specs/001-sfm-mvp/spec.md'
+  'package.json', 'docs/agents/shared-state.md', 'docs/agents/role-enforcement.md', 'docs/agents/message-envelope.md', 'src/agent-envelope.mjs', 'src/agent-router.mjs', 'src/task-state.mjs', 'tests/envelope.test.mjs', 'tests/router.test.mjs', 'tests/task-state.test.mjs', 'specs/001-sfm-mvp/spec.md'
 ];
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
