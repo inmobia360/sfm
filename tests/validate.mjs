@@ -15,6 +15,7 @@ const check = (condition, message) => { if (!condition) failures.push(message); 
 for (const file of required) check(existsSync(join(root, file)), `Falta archivo requerido: ${file}`);
 check(existsSync(join(root, 'agent-roster.html')), 'Falta vista de roster de agentes');
 for (const file of ['.agents/CORP-GOVERNANCE.md', '.agents/CORP-DATA.md', '.agents/CORP-SECURITY.md', '.agents/CORP-INTEGRATIONS.md', '.agents/CORP-PROGRAM.md', '.agents/CORP-LEARNING.md', '.agents/CORP-QUALITY.md']) check(existsSync(join(root, file)), `Falta persona corporativa: ${file}`);
+for (const file of ['.agents/DEV-PRODUCT-SDD.md', '.agents/DEV-ARCHITECTURE.md', '.agents/DEV-UX.md', '.agents/DEV-FRONTEND.md', '.agents/DEV-DATA.md', '.agents/DEV-AI-RULES.md', '.agents/DEV-QUALITY-TEST.md', '.agents/DEV-SECURITY.md', '.agents/DEV-DOCS.md']) check(existsSync(join(root, file)), `Falta persona de desarrollo: ${file}`);
 const index = readFileSync(join(root, 'index.html'), 'utf8');
 const manifest = JSON.parse(readFileSync(join(root, 'demo-manifest.json'), 'utf8'));
 const config = JSON.parse(readFileSync(join(root, 'agent-config.json'), 'utf8'));
