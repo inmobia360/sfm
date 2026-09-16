@@ -4,7 +4,7 @@ import { join } from 'node:path';
 const root = process.cwd();
 const required = [
   'index.html', 'launch.html', 'ceo.html', 'scenarios.html', 'worker.html',
-  'training.html', 'report.html', 'audit.html', 'notifications.html',
+  'training.html', 'report.html', 'audit.html', 'notifications.html', 'role-context.html',
   'integrations.html', 'app.js', 'data.js', 'demo-manifest.json',
   'docs/agents/constitution.md', 'docs/agents/authority-matrix.md',
   'docs/agents/shared-state.md', 'specs/001-sfm-mvp/spec.md'
