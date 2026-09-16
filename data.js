@@ -32,3 +32,15 @@ window.SFM_INITIAL = {
 };
 window.sfmLoad = () => JSON.parse(localStorage.getItem(window.SFM_DEMO_KEY) || JSON.stringify(window.SFM_INITIAL));
 window.sfmReset = () => { localStorage.setItem(window.SFM_DEMO_KEY, JSON.stringify(window.SFM_INITIAL)); return sfmLoad(); };
+window.sfmCommit = (state, actor, action, module, detail='') => {
+  state.audit.push({at:new Date().toISOString(),actor,action,module,detail});
+  localStorage.setItem(window.SFM_DEMO_KEY, JSON.stringify(state));
+  return state;
+};
+window.sfmCreateIncident = (state, payload) => {
+  const incident={id:`INC-${String(state.incidents.length+23).padStart(3,'0')}`,status:'Abierta',...payload};
+  state.incidents.push(incident);
+  return sfmCommit(state,payload.actor||'DEMO-USER','Creó '+incident.id,'Incidencias',incident.title);
+};
+window.sfmApproveHours = (state, employeeId, approver='SUP-001') => sfmCommit(state,approver,`Aprobó horas de ${employeeId}`,'Payroll');
+window.sfmGeofence = (distance, radius=100) => ({distance,radius,valid:distance<=radius,status:distance<=radius?'Válido':'Fuera de zona'});
