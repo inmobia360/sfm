@@ -12,6 +12,7 @@ Los agentes no deben duplicar reglas dentro de sus prompts o handlers. Deben inv
 | Payroll | `payroll-actions.mjs` | Revisar → aprobar → exportar |
 | Divisiones | `division-lifecycle.mjs` | `INFANTE` aprueba `PREPARED → ACTIVE` |
 | Integridad de datos | `data-integrity.mjs` | IDs y referencias operativas válidas |
+| Ofertas y presupuestos | `commercial-rules.mjs` | `JANITORIAL` prepara; `INFANTE` aprueba compromisos |
 
 ## Política de ejecución
 
