@@ -6,6 +6,7 @@ export async function loadAgentConfig(path) {
   if (!Array.isArray(config.activeAgents) || !config.activeAgents.length) throw new Error('activeAgents no puede estar vacío');
   const ids = config.activeAgents.map(agent => agent.agentId);
   if (new Set(ids).size !== ids.length) throw new Error('agentId duplicado');
+  if (!Array.isArray(config.developmentAgents) || !config.developmentAgents.length) throw new Error('developmentAgents no puede estar vacío');
   if (!config.governance?.humanApprovalRequired) throw new Error('La aprobación humana debe estar activa');
   return config;
 }

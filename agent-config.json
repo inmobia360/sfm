@@ -30,5 +30,6 @@
     { "agentId": "CORP-PROGRAM", "role": "STAFF", "divisionId": "CORP" },
     { "agentId": "CORP-FINANCE", "role": "STAFF", "divisionId": "CORP" }
   ],
+  "developmentAgents": ["DEV-PRODUCT-SDD", "DEV-ARCHITECTURE", "DEV-UX", "DEV-FRONTEND", "DEV-DATA", "DEV-AI-RULES", "DEV-QUALITY-TEST", "DEV-SECURITY", "DEV-DOCS"],
   "governance": { "humanApprovalRequired": true, "continuousGps": false, "legalPayroll": false }
 }
