@@ -11,4 +11,6 @@ assert.equal(result.audit.correlationId, 'FLOW-3');
 assert.equal(events, 1);
 assert.equal(dispatch({ ...message, intent: 'UNKNOWN_INTENT' }).status, 'ESCALATED');
 assert.equal(dispatch({ ...message, intent: 'REQUEST_BUDGET', to: { agentId: 'CORP-FINANCE' }, scope: { divisionId: 'CORP' } }).status, 'WAITING_APPROVAL');
+const approved = dispatch({ ...message, intent: 'REQUEST_BUDGET', to: { agentId: 'CORP-FINANCE' }, scope: { divisionId: 'CORP' } }, { approval: { status: 'APPROVED', approvedBy: 'HUMAN-001' } });
+assert.equal(approved.status, 'ACCEPTED');
 console.log('RUNTIME TEST OK · handoff · tarea · auditoría');
