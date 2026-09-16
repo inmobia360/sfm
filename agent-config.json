@@ -1,0 +1,14 @@
+{
+  "director": "INFANTE",
+  "activeDivisions": ["JANITORIAL"],
+  "preparedDivisions": ["SECURITY", "LANDSCAPING", "EVENTS", "DISASTER_RECOVERY"],
+  "activeAgents": [
+    { "agentId": "INFANTE", "role": "DIRECTOR", "divisionId": "CORP" },
+    { "agentId": "JANITORIAL", "role": "CEO", "divisionId": "JANITORIAL" },
+    { "agentId": "JAN-ONBOARDING", "role": "SPECIALIST", "divisionId": "JANITORIAL" },
+    { "agentId": "JAN-QUALITY", "role": "SPECIALIST", "divisionId": "JANITORIAL" },
+    { "agentId": "JAN-PAYROLL", "role": "SPECIALIST", "divisionId": "JANITORIAL" },
+    { "agentId": "CORP-FINANCE", "role": "STAFF", "divisionId": "CORP" }
+  ],
+  "governance": { "humanApprovalRequired": true, "continuousGps": false, "legalPayroll": false }
+}
