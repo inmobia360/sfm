@@ -33,6 +33,7 @@ check(manifestText.includes(division), `Manifiesto sin división ${division}`);
 }
 check(config.director === 'INFANTE' && config.activeDivisions.includes('JANITORIAL'), 'Configuración sin director o división activa');
 check(config.governance.humanApprovalRequired === true, 'Configuración sin aprobación humana obligatoria');
+check(manifest.views.includes('agent-roster.html'), 'Manifiesto sin vista de roster');
 for (const agent of ['INFANTE', 'JANITORIAL', 'HR', 'QUALITY', 'FINANCE', 'DATA']) {
   check(catalog.toUpperCase().includes(agent), `Catálogo sin referencia a ${agent}`);
 }
