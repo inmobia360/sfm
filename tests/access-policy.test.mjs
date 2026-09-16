@@ -7,4 +7,5 @@ assert.equal(can({ agentId: 'JANITORIAL', role: 'CEO', divisionId: 'JANITORIAL' 
 assert.equal(can({ agentId: 'JAN-007', role: 'WORKER', divisionId: 'JANITORIAL', employeeId: 'JAN-007' }, 'VIEW_OWN_TASK', { divisionId: 'JANITORIAL', employeeId: 'JAN-007' }), 'ALLOW');
 assert.equal(can({ agentId: 'JAN-007', role: 'WORKER', divisionId: 'JANITORIAL', employeeId: 'JAN-007' }, 'VIEW_OWN_TASK', { divisionId: 'JANITORIAL', employeeId: 'JAN-001' }), 'DENY');
 assert.equal(can({ agentId: 'JANITORIAL', role: 'CEO', divisionId: 'JANITORIAL' }, 'VIEW_DIVISION', { divisionId: 'SECURITY' }), 'DENY');
+assert.equal(can({ agentId: 'JAN-QUALITY', role: 'SPECIALIST', divisionId: 'JANITORIAL' }, 'VALIDATE_SERVICE', { divisionId: 'JANITORIAL' }), 'ALLOW');
 console.log('ACCESS POLICY TEST OK · allow · deny · escalate · aislamiento');

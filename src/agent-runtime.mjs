@@ -1,5 +1,6 @@
 import { routeEnvelope } from './agent-router.mjs';
 import { transitionTask } from './task-state.mjs';
+import { can } from './access-policy.mjs';
 
 export function dispatch(message, context = {}) {
   const routing = routeEnvelope(message);
@@ -7,7 +8,9 @@ export function dispatch(message, context = {}) {
   if (message.intent !== 'VALIDATE_CHECKLIST' || !context.task || !context.nextStatus) {
     return { ...routing, audit: audit(message, routing.status, 'HANDOFF_ACCEPTED') };
   }
-  const result = transitionTask(context.task, context.nextStatus, context.actor || { agentId: message.to.agentId, role: 'SPECIALIST' });
+  const actor = { agentId: message.to.agentId, role: 'SPECIALIST', divisionId: message.scope.divisionId, ...(context.actor || {}) };
+  if (can(actor, 'VALIDATE_SERVICE', { divisionId: message.scope.divisionId }) !== 'ALLOW') return { status: 'REJECTED', reason: 'ACTOR_NOT_AUTHORIZED', audit: audit(message, 'REJECTED', 'ACTOR_NOT_AUTHORIZED') };
+  const result = transitionTask(context.task, context.nextStatus, actor);
   return result.ok ? { ...routing, status: 'COMPLETED', task: result.task, audit: { ...audit(message, 'COMPLETED', 'TASK_STATUS_CHANGED'), ...result.audit } } : { ...result, audit: audit(message, 'REJECTED', result.reason) };
 }
 
