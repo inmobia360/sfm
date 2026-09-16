@@ -1,0 +1,10 @@
+{
+  "name": "SFM Operations Intelligence",
+  "version": "0.2.0",
+  "environment": "demo",
+  "syntheticData": true,
+  "entrypoint": "launch.html",
+  "views": ["index.html","ceo.html","scenarios.html","worker.html","training.html","report.html","notifications.html","integrations.html","audit.html"],
+  "divisions": {"active":["JANITORIAL"],"prepared":["SECURITY","LANDSCAPING","EVENTS","DISASTER_RECOVERY"]},
+  "governance": {"director":"INFANTE","humanApprovalRequired":true,"continuousGps":false,"legalPayroll":false}
+}

@@ -44,3 +44,15 @@ window.sfmCreateIncident = (state, payload) => {
 };
 window.sfmApproveHours = (state, employeeId, approver='SUP-001') => sfmCommit(state,approver,`Aprobó horas de ${employeeId}`,'Payroll');
 window.sfmGeofence = (distance, radius=100) => ({distance,radius,valid:distance<=radius,status:distance<=radius?'Válido':'Fuera de zona'});
+window.sfmSubscribe = (onChange) => {
+  const channel = 'BroadcastChannel' in window ? new BroadcastChannel(window.SFM_DEMO_KEY) : null;
+  const receive = () => onChange(window.sfmLoad());
+  window.addEventListener('storage', receive);
+  channel?.addEventListener('message', receive);
+  return () => { window.removeEventListener('storage', receive); channel?.close(); };
+};
+window.sfmPublish = (state) => {
+  localStorage.setItem(window.SFM_DEMO_KEY, JSON.stringify(state));
+  if ('BroadcastChannel' in window) new BroadcastChannel(window.SFM_DEMO_KEY).postMessage({updatedAt:Date.now()});
+  return state;
+};
