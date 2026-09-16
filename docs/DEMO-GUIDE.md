@@ -4,6 +4,8 @@
 
 Abrir `launch.html`. Desde ahí se accede a todas las vistas sin configuración ni credenciales.
 
+En GitHub Pages, la URL de presentación será `.../sfm/launch.html` una vez que Pages esté habilitado para el repositorio y el workflow haya completado su primera ejecución.
+
 ## Recorrido recomendado
 
 1. Abrir `scenarios.html` y presentar la historia del piloto.
