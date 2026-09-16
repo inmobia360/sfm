@@ -2,6 +2,10 @@ import { readFile } from 'node:fs/promises';
 
 export function validateAgentConfig(config) {
   if (config.director !== 'INFANTE') throw new Error('INFANTE debe ser el director');
+  if (!Array.isArray(config.activeDivisions) || !config.activeDivisions.length) throw new Error('activeDivisions no puede estar vacío');
+  if (new Set(config.activeDivisions).size !== config.activeDivisions.length) throw new Error('activeDivision duplicada');
+  if (new Set(config.preparedDivisions || []).size !== (config.preparedDivisions || []).length) throw new Error('preparedDivision duplicada');
+  if ((config.preparedDivisions || []).some(division => config.activeDivisions.includes(division))) throw new Error('división activa y preparada simultáneamente');
   if (!Array.isArray(config.activeAgents) || !config.activeAgents.length) throw new Error('activeAgents no puede estar vacío');
   const ids = config.activeAgents.map(agent => agent.agentId);
   if (new Set(ids).size !== ids.length) throw new Error('agentId duplicado');

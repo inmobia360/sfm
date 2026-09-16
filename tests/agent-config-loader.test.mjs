@@ -9,4 +9,6 @@ assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [{ agentId: 'I
 assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [{ agentId: 'INFANTE', role: 'DIRECTOR', divisionId: 'JANITORIAL' }] }), /CORP/);
 assert.throws(() => validateAgentConfig({ ...valid, developmentAgents: ['DEV-UX', 'DEV-UX'] }), /developmentAgent duplicado/);
 assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [...valid.activeAgents, { agentId: 'SEC-001', role: 'SPECIALIST', divisionId: 'SECURITY' }] }), /división no activa/);
+assert.throws(() => validateAgentConfig({ ...valid, preparedDivisions: ['JANITORIAL'] }), /activa y preparada/);
+assert.throws(() => validateAgentConfig({ ...valid, activeDivisions: ['JANITORIAL', 'JANITORIAL'] }), /activeDivision duplicada/);
 console.log('CONFIG LOADER TEST OK · director · duplicados · governance');
