@@ -7,3 +7,10 @@ Demo MVP navegable de SFM Services. Esta primera entrega establece el shell ejec
 Abrir `index.html` en un navegador. No requiere instalación, API keys ni servicios externos.
 
 La estructura de agentes y el roadmap están en `docs/agents/`.
+
+## Vistas de demostración
+
+- `index.html`: centro ejecutivo y navegación por dominios.
+- `scenarios.html`: recorrido end-to-end para el presidente.
+- `worker.html`: experiencia móvil de JAN-007.
+- `audit.html`: trazabilidad de eventos y acciones simuladas.
