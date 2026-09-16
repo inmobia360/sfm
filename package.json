@@ -5,7 +5,7 @@
   "description": "SFM Operations Intelligence · MVP demo y núcleo de agentes gobernados",
   "type": "module",
   "scripts": {
-    "test": "node tests/envelope.test.mjs && node tests/router.test.mjs && node tests/task-state.test.mjs && node tests/runtime.test.mjs",
+    "test": "node tests/envelope.test.mjs && node tests/router.test.mjs && node tests/task-state.test.mjs && node tests/runtime.test.mjs && node tests/audit-log.test.mjs",
     "validate": "node tests/validate.mjs"
   }
 }
