@@ -8,8 +8,9 @@ export function dispatch(message, context = {}) {
   const approval = evaluateApproval(message, context.approval);
   if (routing.status !== 'ACCEPTED' && !(routing.status === 'WAITING_APPROVAL' && approval.status === 'APPROVED')) return publish(context, message, { ...routing, audit: audit(message, routing.status, routing.reason || 'ROUTING_GATE') });
   if (approval.status === 'WAITING_APPROVAL' || approval.status === 'REJECTED') return publish(context, message, { ...approval, audit: audit(message, approval.status, 'APPROVAL_GATE') });
+  const effectiveRouting = approval.status === 'APPROVED' ? { ...routing, status: 'ACCEPTED' } : routing;
   if (message.intent !== 'VALIDATE_CHECKLIST' || !context.task || !context.nextStatus) {
-    return { ...routing, audit: audit(message, routing.status, 'HANDOFF_ACCEPTED') };
+    return { ...effectiveRouting, audit: audit(message, effectiveRouting.status, 'HANDOFF_ACCEPTED') };
   }
   const actor = { agentId: message.to.agentId, role: 'SPECIALIST', divisionId: message.scope.divisionId, ...(context.actor || {}) };
   if (can(actor, 'VALIDATE_SERVICE', { divisionId: message.scope.divisionId }) !== 'ALLOW') return publish(context, message, { status: 'REJECTED', reason: 'ACTOR_NOT_AUTHORIZED', audit: audit(message, 'REJECTED', 'ACTOR_NOT_AUTHORIZED') });
