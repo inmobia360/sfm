@@ -14,3 +14,4 @@ La estructura de agentes y el roadmap están en `docs/agents/`.
 - `scenarios.html`: recorrido end-to-end para el presidente.
 - `worker.html`: experiencia móvil de JAN-007.
 - `audit.html`: trazabilidad de eventos y acciones simuladas.
+- `integrations.html`: conectores futuros y controles de gobierno.
