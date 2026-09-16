@@ -10,6 +10,7 @@ export function validateAgentConfig(config) {
   const ids = config.activeAgents.map(agent => agent.agentId);
   if (new Set(ids).size !== ids.length) throw new Error('agentId duplicado');
   if (config.activeAgents.some(agent => !agent.agentId || !agent.role || !agent.divisionId)) throw new Error('cada agente debe declarar identidad, rol y división');
+  if (!config.specialties || config.activeAgents.some(agent => !config.specialties[agent.agentId])) throw new Error('cada agente debe declarar especialidad');
   const director = config.activeAgents.find(agent => agent.agentId === config.director);
   if (director?.divisionId !== 'CORP' || director.role !== 'DIRECTOR') throw new Error('INFANTE debe ser DIRECTOR de CORP');
   const activeDivisions = new Set(['CORP', ...(config.activeDivisions || [])]);
@@ -17,7 +18,7 @@ export function validateAgentConfig(config) {
   if (!Array.isArray(config.developmentAgents) || !config.developmentAgents.length) throw new Error('developmentAgents no puede estar vacío');
   if (new Set(config.developmentAgents).size !== config.developmentAgents.length) throw new Error('developmentAgent duplicado');
   if (!config.governance?.humanApprovalRequired) throw new Error('La aprobación humana debe estar activa');
-  return config;
+  return { ...config, activeAgents: config.activeAgents.map(agent => ({ ...agent, specialty: config.specialties[agent.agentId] })) };
 }
 
 export async function loadAgentConfig(path) {

@@ -31,5 +31,6 @@
     { "agentId": "CORP-FINANCE", "role": "STAFF", "divisionId": "CORP" }
   ],
   "developmentAgents": ["DEV-PRODUCT-SDD", "DEV-ARCHITECTURE", "DEV-UX", "DEV-FRONTEND", "DEV-DATA", "DEV-AI-RULES", "DEV-QUALITY-TEST", "DEV-SECURITY", "DEV-DOCS"],
+  "specialties": { "INFANTE": "Gobierno corporativo", "JANITORIAL": "Dirección de operaciones", "JAN-ONBOARDING": "Altas y onboarding", "JAN-QUALITY": "Calidad e incidencias", "JAN-PAYROLL": "Horas y payroll", "JAN-WORKFORCE": "Cobertura y equipos", "JAN-SCHEDULING": "Turnos y rotación", "JAN-TIME": "Fichajes y geofence", "JAN-FINANCE": "Costes operativos", "JAN-REPORTING": "Informes de servicio", "JAN-CLEANING": "Limpieza general", "JAN-FLOORS": "Suelos y moquetas", "JAN-EVENTS": "Limpieza de eventos", "JAN-INCIDENTS": "Incidencias operativas", "JAN-CONTRACTS": "Contratos y ofertas", "JAN-LEARNING": "Formación operativa", "JAN-COPILOT": "Copiloto supervisado", "CORP-HR": "Recursos humanos", "CORP-LEARNING": "Gobierno de aprendizaje", "CORP-QUALITY": "Calidad corporativa", "CORP-GOVERNANCE": "Riesgo y cumplimiento", "CORP-DATA": "Datos y métricas", "CORP-SECURITY": "Seguridad corporativa", "CORP-INTEGRATIONS": "Integraciones", "CORP-PROGRAM": "Programa y dependencias", "CORP-FINANCE": "Finanzas corporativas" },
   "governance": { "humanApprovalRequired": true, "continuousGps": false, "legalPayroll": false }
 }

@@ -11,4 +11,5 @@ assert.throws(() => validateAgentConfig({ ...valid, developmentAgents: ['DEV-UX'
 assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [...valid.activeAgents, { agentId: 'SEC-001', role: 'SPECIALIST', divisionId: 'SECURITY' }] }), /división no activa/);
 assert.throws(() => validateAgentConfig({ ...valid, preparedDivisions: ['JANITORIAL'] }), /activa y preparada/);
 assert.throws(() => validateAgentConfig({ ...valid, activeDivisions: ['JANITORIAL', 'JANITORIAL'] }), /activeDivision duplicada/);
+assert.equal(validateAgentConfig(config).activeAgents.find(agent => agent.agentId === 'JAN-QUALITY').specialty, 'Calidad e incidencias');
 console.log('CONFIG LOADER TEST OK · director · duplicados · governance');
