@@ -23,6 +23,7 @@
 - [ ] Se verifica el shell en navegador.
 - [ ] Se prueba al menos un caso permitido y uno rechazado por cada rol sensible.
 - [ ] Se revisa `git status` y el commit publicado.
+- [ ] La comprobación CI de GitHub Actions está verde.
 
 ## Pendiente antes de producción
 

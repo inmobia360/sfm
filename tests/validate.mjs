@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 const root = process.cwd();
 const required = [
-  'index.html', 'launch.html', 'ceo.html', 'scenarios.html', 'worker.html', 'audit-enhance.js', 'docs/RELEASE-CHECKLIST.md',
+  'index.html', 'launch.html', 'ceo.html', 'scenarios.html', 'worker.html', 'audit-enhance.js', 'docs/RELEASE-CHECKLIST.md', '.github/workflows/ci.yml',
   'training.html', 'report.html', 'audit.html', 'notifications.html', 'role-context.html',
   'integrations.html', 'app.js', 'data.js', 'demo-manifest.json', 'AGENTS.md',
   'docs/agents/constitution.md', 'docs/agents/authority-matrix.md',
