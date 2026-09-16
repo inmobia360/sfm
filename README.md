@@ -10,6 +10,12 @@ La estructura de agentes y el roadmap están en `docs/agents/`.
 
 El núcleo ejecutable se compone con `createAgentSystem()` desde `src/agent-system.mjs`; integra registry, routing, autorización, approval gate, bus, auditoría, alertas y dispatch. Su contrato de extensión está documentado en `docs/agents/runtime-guide.md`.
 
+## Composición actual
+
+`INFANTE` dirige la capa corporativa; `JANITORIAL` dirige la operación de servicios; 9 agentes `CORP-*`, 15 especialistas `JAN-*` y 9 agentes `DEV-*` completan el roster documentado en `agent-config.json` y `docs/agents/agent-catalog.md`. Las especialidades se validan antes de construir el runtime y las divisiones futuras permanecen aisladas.
+
+Las reglas reutilizables están en `src/`: onboarding, trabajador, agenda, calidad, formación IA, payroll, ciclo de divisiones, integridad de datos y compromisos comerciales. Sus pruebas forman parte de `npm test`; `npm run validate` protege también su presencia y la coherencia del catálogo.
+
 ## Verificación
 
 Con Node.js instalado, ejecutar `npm test` para las pruebas del sobre de mensajes, routing y estados de tareas, y `npm run validate` para comprobar la topología completa del MVP. El servidor estático puede iniciarse con `python -m http.server 4173`.
