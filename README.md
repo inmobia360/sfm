@@ -15,3 +15,4 @@ La estructura de agentes y el roadmap están en `docs/agents/`.
 - `worker.html`: experiencia móvil de JAN-007.
 - `audit.html`: trazabilidad de eventos y acciones simuladas.
 - `integrations.html`: conectores futuros y controles de gobierno.
+- `notifications.html`: alertas filtrables por rol.
