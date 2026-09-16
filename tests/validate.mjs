@@ -7,7 +7,7 @@ const required = [
   'training.html', 'report.html', 'audit.html', 'notifications.html', 'role-context.html',
   'integrations.html', 'app.js', 'data.js', 'demo-manifest.json',
   'docs/agents/constitution.md', 'docs/agents/authority-matrix.md',
-  'docs/agents/shared-state.md', 'specs/001-sfm-mvp/spec.md'
+  'docs/agents/shared-state.md', 'docs/agents/role-enforcement.md', 'specs/001-sfm-mvp/spec.md'
 ];
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
@@ -18,6 +18,7 @@ const manifest = JSON.parse(readFileSync(join(root, 'demo-manifest.json'), 'utf8
 const catalog = readFileSync(join(root, 'docs/agents/agent-catalog.md'), 'utf8');
 const authority = readFileSync(join(root, 'docs/agents/authority-matrix.md'), 'utf8');
 const spec = readFileSync(join(root, 'specs/001-sfm-mvp/spec.md'), 'utf8');
+const enforcement = readFileSync(join(root, 'docs/agents/role-enforcement.md'), 'utf8');
 
 for (const role of ['INFANTE', 'JANITORIAL', 'SUP-001', 'HR-001', 'JAN-007']) {
   check(index.includes(role), `No aparece el rol demo ${role} en index.html`);
@@ -31,6 +32,8 @@ for (const agent of ['INFANTE', 'JANITORIAL', 'HR', 'QUALITY', 'FINANCE', 'DATA'
 }
 check(/human|humano|aprobaci[oó]n/i.test(authority), 'La matriz no declara control humano');
 check(spec.includes('RF-01') && spec.includes('RF-20'), 'La especificación no cubre RF-01 a RF-20');
+check(enforcement.includes('can(actor, action, resource)'), 'Falta contrato can(actor, action, resource)');
+check(enforcement.includes('divisionId') && enforcement.includes('employeeId'), 'Faltan límites de aislamiento de datos');
 
 for (const file of ['app.js', 'data.js']) {
   try { new Function(readFileSync(join(root, file), 'utf8')); }
