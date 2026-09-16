@@ -20,7 +20,7 @@
   - Hecho cuando: ningún entregable requiera conocer una URL manualmente.
 - [ ] **T10 — Motor de escenarios:** compartir mutaciones entre worker, escenarios, operaciones, calidad y payroll.
   - Hecho cuando: una acción en una vista cambia las métricas de las otras.
-- [ ] **T11 — Reglas completas:** implementar frecuencias, conflictos, geofence y aprobaciones como funciones reutilizables.
+- [x] **T11 — Reglas completas:** implementar frecuencias, conflictos, geofence y aprobaciones como funciones reutilizables.
   - Hecho cuando: cada regla de la spec tiene una prueba o evidencia ejecutable.
 - [ ] **T12 — Validación final:** recorrido responsive y RF-01 a RF-20.
   - Hecho cuando: existe matriz de evidencia y no quedan fallos críticos.

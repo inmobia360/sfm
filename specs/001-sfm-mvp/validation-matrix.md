@@ -6,14 +6,14 @@
 | RF-02 | Selector de rol en `index.html` y lanzador unificado | Verificado en demo |
 | RF-03 | `data.js`: 10 empleados, 3 centros, 3 servicios | Verificado |
 | RF-04 | Employee 360 en `index.html` | Verificado |
-| RF-05 | `scenarios.html`, etapa de onboarding | Simulado |
+| RF-05 | `src/onboarding-rules.mjs` y `scenarios.html` | Reglas verificadas; UI demo |
 | RF-06 | `training.html`: 10 cursos | Verificado |
-| RF-07 | `training.html`: propuesta v2 y aprobación humana | Verificado |
+| RF-07 | `src/learning-rules.mjs` y `training.html` | Reglas verificadas; UI demo |
 | RF-08 | `data.js`, `scenarios.html` y panel Janitorial | Verificado visual |
-| RF-09 | Rotación de JAN-007 en `scenarios.html` | Verificado visual |
+| RF-09 | `src/scheduling-rules.mjs` y `scenarios.html` | Reglas verificadas; UI demo |
 | RF-10 | `worker.html`: entrada/salida y geofence simulado | Verificado visual |
 | RF-11 | `worker.html`: checklist e incidencia | Verificado |
-| RF-12 | `data.js` y `quality` en `index.html` | Verificado visual |
+| RF-12 | `src/quality-rules.mjs` y `data.js` | Reglas verificadas; UI demo |
 | RF-13 | `quality` e informe de cliente | Verificado visual |
 | RF-14 | `src/payroll-actions.mjs` y exportación en `report.html` | Reglas verificadas; UI demo |
 | RF-15 | `report.html`: JSON/CSV | Verificado visual |
