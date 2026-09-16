@@ -7,10 +7,11 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const files = new Map([
   ['spec', read('specs/001-sfm-mvp/spec.md')],
-  ['ui', read('index.html') + read('app.js') + read('data.js')],
+  ['ui', read('index.html') + read('app.js') + read('data.js') + read('styles.css')],
   ['roles', read('role-context.html') + read('role-context.js')],
   ['worker', read('worker.html')],
   ['training', read('training.html')],
+  ['scenarios', read('scenarios.html') + read('launch.html')],
   ['report', read('report.html')],
   ['agents', read('agent-config.json') + read('agent-roster.html')],
   ['runtime', read('src/agent-runtime.mjs') + read('src/approval-gate.mjs') + read('src/access-policy.mjs')],
@@ -23,7 +24,7 @@ const evidence = [
   ['RF-03', ['JAN-010', 'C-003', 'SVC-EVENT']],
   ['RF-04', ['Employee 360', 'id']],
   ['RF-05', ['onboarding']],
-  ['RF-06', ['microcurso', 'duración']],
+  ['RF-06', ['cursos', 'minutos']],
   ['RF-07', ['aprobación humana', 'fuente']],
   ['RF-08', ['Limpieza general', 'Suelos y moquetas']],
   ['RF-09', ['JAN-007', 'rotación']],
@@ -40,8 +41,12 @@ const evidence = [
   ['RF-20', ['viewport', 'mobile']]
 ];
 
-const corpus = [...files.values()].join('\n').toLowerCase();
-const missing = evidence.filter(([, terms]) => terms.some(term => !corpus.includes(term.toLowerCase())));
+const implementationCorpus = [...files.entries()]
+  .filter(([key]) => key !== 'spec')
+  .map(([, value]) => value)
+  .join('\n')
+  .toLowerCase();
+const missing = evidence.filter(([, terms]) => terms.some(term => !implementationCorpus.includes(term.toLowerCase())));
 assert.equal(missing.length, 0, `Requisitos sin evidencia: ${missing.map(([id]) => id).join(', ')}`);
 assert.match(files.get('runtime'), /dispatch|routeEnvelope/);
 assert.match(files.get('audit'), /append|publish/);
