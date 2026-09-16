@@ -8,6 +8,8 @@ Abrir `index.html` en un navegador. No requiere instalación, API keys ni servic
 
 La estructura de agentes y el roadmap están en `docs/agents/`.
 
+El núcleo ejecutable se compone con `createAgentSystem()` desde `src/agent-system.mjs`; integra registry, routing, autorización, approval gate, bus, auditoría, alertas y dispatch. Su contrato de extensión está documentado en `docs/agents/runtime-guide.md`.
+
 ## Verificación
 
 Con Node.js instalado, ejecutar `npm test` para las pruebas del sobre de mensajes, routing y estados de tareas, y `npm run validate` para comprobar la topología completa del MVP. El servidor estático puede iniciarse con `python -m http.server 4173`.
