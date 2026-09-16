@@ -16,7 +16,7 @@
   - Hecho cuando: fuente, cambios, riesgo y botones aprobar/rechazar aparecen.
 - [x] **T8 — Dirección:** crear dashboard corporativo de INFANTE.
   - Hecho cuando: Janitorial activo, futuras divisiones y riesgos aparecen.
-- [ ] **T9 — Integración de navegación:** enlazar lanzador a todas las vistas nuevas desde la app principal.
+- [x] **T9 — Integración de navegación:** enlazar lanzador a todas las vistas nuevas desde la app principal.
   - Hecho cuando: ningún entregable requiera conocer una URL manualmente.
 - [ ] **T10 — Motor de escenarios:** compartir mutaciones entre worker, escenarios, operaciones, calidad y payroll.
   - Hecho cuando: una acción en una vista cambia las métricas de las otras.

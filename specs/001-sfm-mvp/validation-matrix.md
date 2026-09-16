@@ -3,7 +3,7 @@
 | Requisitos | Evidencia actual | Estado |
 |---|---|---|
 | RF-01 | Banner en todas las vistas | Verificado |
-| RF-02 | Selector de rol en `index.html` | Parcial: selector visual |
+| RF-02 | Selector de rol en `index.html` y lanzador unificado | Verificado en demo |
 | RF-03 | `data.js`: 10 empleados, 3 centros, 3 servicios | Verificado |
 | RF-04 | Employee 360 en `index.html` | Verificado |
 | RF-05 | `scenarios.html`, etapa de onboarding | Simulado |
@@ -15,7 +15,7 @@
 | RF-11 | `worker.html`: checklist e incidencia | Verificado |
 | RF-12 | `data.js` y `quality` en `index.html` | Verificado visual |
 | RF-13 | `quality` e informe de cliente | Verificado visual |
-| RF-14 | `index.html` payroll y exportación en `report.html` | Parcial: flujo de aprobación simulado |
+| RF-14 | `src/payroll-actions.mjs` y exportación en `report.html` | Reglas verificadas; UI demo |
 | RF-15 | `report.html`: JSON/CSV | Verificado visual |
 | RF-16 | `index.html` y `ceo.html` | Verificado visual |
 | RF-17 | `scenarios.html` y `launch.html` | Verificado |
