@@ -22,6 +22,8 @@
 - Runtime enlazado con `agent-config.json` y validación de topología por capas.
 - Matriz ejecutable de trazabilidad `RF-01` a `RF-20`.
 - Reglas operativas testeadas para fichaje, checklist e incidencias.
+- Reglas testeadas para onboarding, Employee 360, agenda, calidad, formación IA, payroll y compromisos comerciales.
+- Escenarios, auditoría, alertas, informe y formación conectados al estado común de la demo.
 
 ## No debe presentarse como producción
 
@@ -34,7 +36,7 @@
 
 ## Próxima prioridad técnica
 
-1. Conectar las reglas de `src/worker-actions.mjs` directamente con la vista `worker.html` y eliminar sus handlers simulados duplicados.
+1. Migrar las vistas restantes a un adaptador común de estado y eliminar handlers simulados duplicados.
 2. Persistir el estado en un backend con autenticación, autorización por división y control de concurrencia.
 3. Completar la aprobación real de horas antes de exportar payroll y añadir pruebas de recorrido en navegador.
 4. Activar `SECURITY`, `LANDSCAPING` y otras divisiones únicamente mediante una migración de configuración revisada por `INFANTE`.
