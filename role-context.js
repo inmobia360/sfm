@@ -10,14 +10,19 @@
   const nav = document.querySelector('#nav');
   const roleKeys = Object.keys(policies);
   const apply = () => {
-    const policy = policies[roleKeys[select.selectedIndex] || 'infante'];
+    const role = roleKeys[select.selectedIndex] || 'infante';
+    const policy = policies[role];
     nav.querySelectorAll('button[data-v]').forEach(button => { button.hidden = !policy.views.includes(button.dataset.v); });
     const current = nav.querySelector('button.active:not([hidden])');
     if (!current) nav.querySelector(`button[data-v="${policy.defaultView}"]`)?.click();
     document.querySelector('#org').textContent = policy.org;
-    document.body.dataset.activeRole = roleKeys[select.selectedIndex] || 'infante';
+    document.body.dataset.activeRole = role;
+    document.querySelectorAll('#app .row').forEach(row => {
+      row.hidden = role === 'worker' && !row.textContent.includes('JAN-007');
+    });
   };
   select.addEventListener('change', apply);
   new MutationObserver(apply).observe(nav, { childList: true });
+  new MutationObserver(apply).observe(document.querySelector('#app'), { childList: true, subtree: true });
   apply();
 })();
