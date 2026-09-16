@@ -8,4 +8,5 @@ const valid = { ...config, activeAgents: config.activeAgents.map(agent => ({ ...
 assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [{ agentId: 'INFANTE', role: 'DIRECTOR', divisionId: 'CORP' }, { agentId: 'INFANTE', role: 'STAFF', divisionId: 'CORP' }] }), /duplicado/);
 assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [{ agentId: 'INFANTE', role: 'DIRECTOR', divisionId: 'JANITORIAL' }] }), /CORP/);
 assert.throws(() => validateAgentConfig({ ...valid, developmentAgents: ['DEV-UX', 'DEV-UX'] }), /developmentAgent duplicado/);
+assert.throws(() => validateAgentConfig({ ...valid, activeAgents: [...valid.activeAgents, { agentId: 'SEC-001', role: 'SPECIALIST', divisionId: 'SECURITY' }] }), /división no activa/);
 console.log('CONFIG LOADER TEST OK · director · duplicados · governance');
