@@ -1,0 +1,26 @@
+# Tareas del MVP
+
+- [x] **T1 — Constitución:** documentar jerarquía `INFANTE → JANITORIAL`.
+  - Hecho cuando: existen principios, límites y escalados.
+- [x] **T2 — Estado inicial:** crear empleados, centros, servicios, tareas e incidencias sintéticos.
+  - Hecho cuando: `data.js` contiene las entidades y reset local.
+- [x] **T3 — Shell ejecutivo:** crear lanzador, navegación, banner demo y KPIs.
+  - Hecho cuando: `launch.html` e `index.html` cargan sin dependencias.
+- [x] **T4 — Recorrido ejecutivo:** crear escenarios end-to-end.
+  - Hecho cuando: onboarding, fichaje, rotación, calidad e informe aparecen como etapas.
+- [x] **T5 — Frente móvil:** crear fichaje, checklist, formación e incidencia.
+  - Hecho cuando: checklist 0/5 bloquea cierre y 5/5 lo habilita.
+- [x] **T6 — Informes y audit:** crear reporte cliente y audit log.
+  - Hecho cuando: JSON/CSV y eventos sintéticos son visibles.
+- [x] **T7 — Formación IA:** crear catálogo y aprobación humana.
+  - Hecho cuando: fuente, cambios, riesgo y botones aprobar/rechazar aparecen.
+- [x] **T8 — Dirección:** crear dashboard corporativo de INFANTE.
+  - Hecho cuando: Janitorial activo, futuras divisiones y riesgos aparecen.
+- [ ] **T9 — Integración de navegación:** enlazar lanzador a todas las vistas nuevas desde la app principal.
+  - Hecho cuando: ningún entregable requiera conocer una URL manualmente.
+- [ ] **T10 — Motor de escenarios:** compartir mutaciones entre worker, escenarios, operaciones, calidad y payroll.
+  - Hecho cuando: una acción en una vista cambia las métricas de las otras.
+- [ ] **T11 — Reglas completas:** implementar frecuencias, conflictos, geofence y aprobaciones como funciones reutilizables.
+  - Hecho cuando: cada regla de la spec tiene una prueba o evidencia ejecutable.
+- [ ] **T12 — Validación final:** recorrido responsive y RF-01 a RF-20.
+  - Hecho cuando: existe matriz de evidencia y no quedan fallos críticos.
