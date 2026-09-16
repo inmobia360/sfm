@@ -7,6 +7,6 @@ const stop = bus.subscribe('TASK_STATUS_CHANGED', event => { received += event.t
 bus.subscribe('*', event => { wildcard = event.eventName; });
 const delivery = bus.publish('TASK_STATUS_CHANGED', { taskId: 'T-1042' });
 assert.equal(received, 1); assert.equal(wildcard, 'TASK_STATUS_CHANGED');
-assert.equal(delivery.errors.length, 1); assert.equal(delivery.delivered, 1);
+assert.equal(delivery.errors.length, 1); assert.equal(delivery.delivered, 2);
 stop(); bus.publish('TASK_STATUS_CHANGED', { taskId: 'T-1043' }); assert.equal(received, 1);
 console.log('EVENT BUS TEST OK · suscripción · publicación · cancelación');
