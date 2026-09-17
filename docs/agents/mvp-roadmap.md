@@ -47,3 +47,14 @@
 - Verificación responsive.
 - Validación RF por RF.
 - README, arquitectura, riesgos, capturas y guion de 15 minutos.
+
+## Fase 7 — Preparación productiva (no activada)
+
+- `DEV-ARCHITECTURE`: convertir el handler agnóstico en servicio HTTP y definir contratos de error.
+- `DEV-DATA`: sustituir `scoped-repository` por persistencia transaccional y migraciones.
+- `DEV-SECURITY`: integrar identidad, sesiones, autorización server-side y gestión de secretos.
+- `DEV-QUALITY-TEST`: pruebas de aislamiento entre tenant/división, concurrencia, rollback y recorrido navegador.
+- `CORP-GOVERNANCE`: revisión RGPD/AI Act, aprobaciones laborales/financieras y criterios de rollback.
+- `INFANTE`: aprobar cada cambio de ámbito; `JANITORIAL` conserva únicamente su ámbito operativo.
+
+La fase 7 no empieza con datos reales ni despliegue productivo: requiere cerrar las puertas de `docs/PRODUCTION-BOUNDARY.md` y seguir `docs/PRODUCTION-API-CONTRACT.md`.
