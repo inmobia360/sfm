@@ -18,6 +18,7 @@
 - Integraciones simuladas.
 - Dashboard corporativo de INFANTE.
 - Workflow preparado para GitHub Pages.
+- CI ejecuta `npm test`, `npm run test:production-guard` y `npm run validate` en cada push/PR.
 - Estado compartido entre vistas mediante `localStorage` y `BroadcastChannel`.
 - Runtime enlazado con `agent-config.json` y validación de topología por capas.
 - Matriz ejecutable de trazabilidad `RF-01` a `RF-20`.
@@ -33,6 +34,7 @@
 - No hay payroll legal ni seguimiento GPS continuo.
 - La prueba Playwright headless está limitada por permisos del entorno Windows.
 - GitHub Pages requiere habilitación manual en Settings.
+- La ejecución externa de Actions y la URL pública no se han podido verificar desde este entorno.
 
 ## Próxima prioridad técnica
 
