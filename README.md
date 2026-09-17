@@ -10,6 +10,8 @@ La estructura de agentes y el roadmap están en `docs/agents/`.
 
 La transición a backend está definida, pero no activada: consulta `docs/PRODUCTION-BOUNDARY.md` y `docs/PRODUCTION-API-CONTRACT.md`. El MVP no usa autenticación productiva ni datos reales.
 
+Antes de seleccionar proveedores o conectar servicios reales, completar `docs/PRODUCTION-DECISION-GATE.md`; funciona como registro de decisiones de identidad, persistencia, colas, despliegue y cumplimiento.
+
 El núcleo ejecutable se compone con `createAgentSystem()` desde `src/agent-system.mjs`; integra registry, routing, autorización, approval gate, bus, auditoría, alertas y dispatch. Su contrato de extensión está documentado en `docs/agents/runtime-guide.md`.
 
 ## Composición actual
