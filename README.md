@@ -20,7 +20,9 @@ Las reglas reutilizables están en `src/`: onboarding, trabajador, agenda, calid
 
 ## Verificación
 
-Con Node.js instalado, ejecutar `npm run test:all` para la batería completa (MVP y fronteras productivas), y `npm run validate` para comprobar la topología completa del MVP. `npm test` mantiene la batería principal. El servidor estático puede iniciarse con `python -m http.server 4173`.
+Con Node.js instalado, ejecutar `npm run test:all` para la batería completa (MVP y fronteras productivas), y `npm run validate` para comprobar la topología completa del MVP. `npm test` mantiene la batería principal. Para servir el demo de forma reproducible, ejecutar `npm run demo:serve` y abrir `http://127.0.0.1:4173`; el servidor incluye protección básica contra traversal y métodos no permitidos.
+
+El recorrido responsive T12 se ejecuta con el servidor activo mediante `python tests/browser-t12.py` y requiere Playwright/Chromium. `npm run test:ui-contract` es solo un smoke test estructural y no reemplaza la verificación visual en escritorio, tablet y móvil.
 
 ## Vistas de demostración
 
