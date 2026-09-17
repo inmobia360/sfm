@@ -11,8 +11,8 @@
 ## Datos y seguridad
 
 - [x] Todos los datos de la demo son sintéticos.
-- [ ] La UI no se considera autenticación.
-- [ ] El backend futuro debe repetir el aislamiento por división, centro y empleado.
+- [x] La UI no se considera autenticación.
+- [x] El backend futuro debe repetir el aislamiento por división, centro y empleado.
 - [x] No se activan GPS continuo, payroll legal ni integraciones externas sin revisión.
 - [x] Los eventos de runtime quedan registrados en audit log.
 
@@ -22,7 +22,7 @@
 - [x] `npm run validate` pasa completamente.
 - [ ] Se verifica el shell en navegador.
 - [ ] Se prueba al menos un caso permitido y uno rechazado por cada rol sensible.
-- [ ] Se revisa `git status` y el commit publicado.
+- [x] Se revisa `git status` y el commit publicado.
 - [ ] La comprobación CI de GitHub Actions está verde.
 
 ## Pendiente antes de producción

@@ -18,7 +18,8 @@
 - Integraciones simuladas.
 - Dashboard corporativo de INFANTE.
 - Workflow preparado para GitHub Pages.
-- CI ejecuta `npm test`, `npm run test:production-guard` y `npm run validate` en cada push/PR.
+- CI configurado para ejecutar `npm run test:all` y `npm run validate` en cada push/PR.
+- Servidor local reproducible disponible con `npm run demo:serve` para el recorrido T12.
 - Estado compartido entre vistas mediante `localStorage` y `BroadcastChannel`.
 - Runtime enlazado con `agent-config.json` y validación de topología por capas.
 - Matriz ejecutable de trazabilidad `RF-01` a `RF-20`.
