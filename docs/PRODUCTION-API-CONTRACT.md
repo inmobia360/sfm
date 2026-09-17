@@ -53,4 +53,4 @@ La validación base está preparada en `src/request-context.mjs` y exige los cam
 
 Hasta completar estos pasos, el MVP sigue siendo una demo sintética y no debe recibir datos reales.
 
-`src/scoped-repository.mjs` proporciona una implementación en memoria para probar el aislamiento antes de elegir una base de datos. Debe sustituirse por persistencia transaccional en producción.
+`src/scoped-repository.mjs` proporciona una implementación en memoria para probar aislamiento y commit/rollback antes de elegir una base de datos. Debe sustituirse por persistencia transaccional real en producción.

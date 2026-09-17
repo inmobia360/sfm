@@ -11,4 +11,8 @@ assert.deepEqual(repository.list(context).map(record => record.id), ['A']);
 assert.throws(() => repository.append(context, { id: 'X', tenantId: 'TENANT-001', divisionId: 'SECURITY', siteId: 'C-001' }), /SCOPE_DENIED/);
 assert.equal(repository.append(context, { id: 'D', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' }).id, 'D');
 assert.equal(repository.size(), 4);
+assert.throws(() => repository.transaction(context, tx => { tx.append({ id: 'E', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' }); throw new Error('ROLLBACK'); }), /ROLLBACK/);
+assert.equal(repository.size(), 4);
+repository.transaction(context, tx => tx.append({ id: 'E', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' }));
+assert.equal(repository.size(), 5);
 console.log('SCOPED REPOSITORY TEST OK · tenant · división · lectura · escritura');
