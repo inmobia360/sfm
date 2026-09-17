@@ -28,7 +28,7 @@
 ## No debe presentarse como producción
 
 - La selección de rol aún es principalmente de demostración.
-- Algunas mutaciones todavía no sincronizan todas las vistas en tiempo real.
+- La sincronización de demo usa `data.js`, `localStorage` y `BroadcastChannel`; no equivale todavía a consistencia server-side.
 - No hay autenticación ni backend.
 - No hay payroll legal ni seguimiento GPS continuo.
 - La prueba Playwright headless está limitada por permisos del entorno Windows.
@@ -36,7 +36,7 @@
 
 ## Próxima prioridad técnica
 
-1. Migrar las vistas restantes a un adaptador común de estado y eliminar handlers simulados duplicados.
+1. Completar la validación responsive y el recorrido real en navegador; la automatización está preparada en `tests/browser-t12.py`.
 2. Persistir el estado en un backend con autenticación, autorización por división y control de concurrencia.
 3. Completar la aprobación real de horas antes de exportar payroll y añadir pruebas de recorrido en navegador.
 4. Activar `SECURITY`, `LANDSCAPING` y otras divisiones únicamente mediante una migración de configuración revisada por `INFANTE`.
