@@ -10,6 +10,10 @@ assert.equal(result.status, 200); assert.equal(JSON.parse(response.body).actor, 
 const asyncResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
 const asyncResult = await handleHttpRequest({ request, response: asyncResponse, contextResolver: async () => context, apiHandler: async input => { await Promise.resolve(); return { status: 200, body: { actor: input.context.actorId } }; } });
 assert.equal(asyncResult.status, 200); assert.equal(JSON.parse(asyncResponse.body).actor, 'JANITORIAL');
+const asyncErrorResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
+const asyncError = await handleHttpRequest({ request, response: asyncErrorResponse, contextResolver: async () => context, apiHandler: async () => { throw new Error('internal async detail'); } });
+assert.equal(asyncError.status, 400); assert.equal(JSON.parse(asyncErrorResponse.body).error, 'BAD_REQUEST');
+assert.equal(asyncErrorResponse.body.includes('internal async detail'), false);
 await assert.rejects(() => handleHttpRequest({ request, response, apiHandler: () => ({ status: 200, body: {} }) }), /DEPENDENCIES_REQUIRED/);
 const badResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
 const bad = await handleHttpRequest({ request, badResponse, response: badResponse, contextResolver: async () => { throw new Error('internal context detail'); }, apiHandler: () => ({ status: 200, body: {} }) });
