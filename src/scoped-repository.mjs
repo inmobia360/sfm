@@ -23,6 +23,23 @@ export function createScopedRepository({ records = [] } = {}) {
       store = working;
       return result;
     },
+    async transactionAsync(context, callback) {
+      const resolved = resolveRequestContext(context);
+      const working = store.map(record => ({ ...record }));
+      const tx = {
+        list: (predicate = () => true) => working.filter(record => isResourceInContext(resolved, record) && predicate(record)).map(record => ({ ...record })),
+        append: record => {
+          if (!isResourceInContext(resolved, record)) throw new Error('REPOSITORY_SCOPE_DENIED');
+          const now = new Date().toISOString();
+          const saved = { ...record, tenantId: resolved.tenantId, divisionId: resolved.divisionId, createdAt: record.createdAt || now, updatedAt: now };
+          working.push(saved);
+          return { ...saved };
+        }
+      };
+      const result = await callback(tx);
+      store = working;
+      return result;
+    },
     size() { return store.length; }
   };
 }

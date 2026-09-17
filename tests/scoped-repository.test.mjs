@@ -16,4 +16,16 @@ assert.throws(() => repository.transaction(context, tx => { tx.append({ id: 'E',
 assert.equal(repository.size(), 4);
 repository.transaction(context, tx => tx.append({ id: 'E', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' }));
 assert.equal(repository.size(), 5);
+await assert.rejects(repository.transactionAsync(context, async tx => {
+  tx.append({ id: 'F', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' });
+  await Promise.resolve();
+  throw new Error('ASYNC_ROLLBACK');
+}), /ASYNC_ROLLBACK/);
+assert.equal(repository.size(), 5);
+const asyncSaved = await repository.transactionAsync(context, async tx => {
+  await Promise.resolve();
+  return tx.append({ id: 'F', tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' });
+});
+assert.equal(asyncSaved.id, 'F');
+assert.equal(repository.size(), 6);
 console.log('SCOPED REPOSITORY TEST OK · tenant · división · lectura · escritura');
