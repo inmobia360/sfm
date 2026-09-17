@@ -16,7 +16,8 @@
     "test:http-transport": "node tests/http-transport.test.mjs",
     "test:workflow-safety": "node tests/workflow-safety.test.mjs",
     "test:demo-safety": "node tests/demo-safety.test.mjs",
-    "test:all": "npm test && npm run test:api-contract && npm run test:request-context && npm run test:request-authorization && npm run test:governed-action && npm run test:api-handler && npm run test:scoped-repository && npm run test:workflow-safety && npm run test:demo-safety && npm run test:http-transport",
+    "test:ui-contract": "node tests/ui-contract.test.mjs",
+    "test:all": "npm test && npm run test:api-contract && npm run test:request-context && npm run test:request-authorization && npm run test:governed-action && npm run test:api-handler && npm run test:scoped-repository && npm run test:workflow-safety && npm run test:demo-safety && npm run test:ui-contract && npm run test:http-transport",
     "validate": "node tests/validate.mjs"
   }
 }
