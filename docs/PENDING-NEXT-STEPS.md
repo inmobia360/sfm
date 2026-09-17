@@ -20,6 +20,7 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 6. Para producción: seguir `docs/PRODUCTION-BOUNDARY.md` antes de conectar datos o servicios reales.
 7. Backend: contrato inicial implementado como handler/transporte agnóstico, con contexto, autorización, dashboard, auditoría y ciclo de aprobaciones; elegir proveedor e identidad server-side antes de producción.
 8. Persistencia: `src/scoped-repository.mjs` ya cubre aislamiento y commit/rollback síncrono y asíncrono en memoria; sustituirlo por un adaptador transaccional real después de elegir proveedor y cerrar concurrencia, migraciones y rollback.
+9. Decisiones productivas: completar `docs/PRODUCTION-DECISION-GATE.md` con proveedor, responsables y evidencias antes de activar cualquier entorno real.
 
 ## Comandos de reanudación
 
