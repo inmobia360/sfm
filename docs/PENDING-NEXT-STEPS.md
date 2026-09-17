@@ -6,6 +6,8 @@ Fecha de la nota: 16 de septiembre de 2026
 
 La arquitectura de agentes está creada y validada: `INFANTE` dirige la capa corporativa, `JANITORIAL` dirige la operación y el roster incluye 26 agentes activos más 9 agentes de desarrollo. Las especialidades, divisiones activas/preparadas, autorización, aprobación humana, routing, auditoría y aislamiento están protegidos por configuración y pruebas.
 
+La frontera backend ya dispone de handler agnóstico (`src/production-api-handler.mjs`), contexto y autorización server-side preparadas, acciones gobernadas con aprobación humana y repositorio aislado con commit/rollback. Estas piezas son una base de prueba; todavía no constituyen un servicio productivo.
+
 El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación IA, calidad, payroll, informes, alertas, auditoría y lanzador. Las reglas reutilizables están en `src/` y la suite completa se ejecuta con `npm test`; la topología se valida con `npm run validate`.
 
 ## Próximo trabajo prioritario
