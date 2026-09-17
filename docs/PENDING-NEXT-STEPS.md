@@ -13,9 +13,9 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 ## Próximo trabajo prioritario
 
 1. T10 completado: las vistas del MVP usan el adaptador común `data.js`; mantenerlo como frontera para la futura API.
-2. T12 parcialmente verificado: `npm run demo:serve` levanta el servidor local; el navegador integrado recorrió las 10 vistas en escritorio, confirmó el layout sin overflow y ejecutó el flujo del trabajador (fichaje, 5/5 checks y envío a revisión). Sigue pendiente la comprobación automatizada de tablet/móvil porque el control de viewport no está disponible aquí y Playwright no puede lanzar Chromium (`WinError 5`); no se ha declarado T12 completado.
+2. T12 completado: `tests/browser-t12.py` verificó las 10 vistas en escritorio, tablet y móvil, sin overflow, y ejecutó el flujo del trabajador (fichaje, 5/5 checks y envío a revisión). La ejecución requirió permisos elevados para superar la restricción local de procesos de Playwright (`WinError 5`).
 3. Completado en navegador integrado: se recorrieron dashboard, escenarios, worker, formación, informe, alertas, integraciones y auditoría; el worker ejecutó fichaje, checklist 5/5 y envío a revisión. La evidencia es de demo local con datos sintéticos.
-4. Verificar responsive en escritorio, tablet y móvil real.
+4. Completado junto con T12: responsive verificado automáticamente en 1440×900, 768×1024 y 390×844. Queda recomendable una revisión visual en dispositivo físico antes de una presentación externa.
 5. Confirmar externamente GitHub Actions y habilitar GitHub Pages manualmente desde Settings; el workflow y los checks ya están definidos, pero la URL pública no se ha verificado desde este entorno.
 6. Para producción: seguir `docs/PRODUCTION-BOUNDARY.md` antes de conectar datos o servicios reales.
 7. Backend: contrato inicial implementado como handler/transporte agnóstico, con contexto, autorización, dashboard, auditoría y ciclo de aprobaciones; elegir proveedor e identidad server-side antes de producción.
