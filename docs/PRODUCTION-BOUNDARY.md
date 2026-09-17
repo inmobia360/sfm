@@ -2,6 +2,8 @@
 
 Este MVP es una demo estática con datos sintéticos y `localStorage`. La siguiente fase no debe reutilizar el navegador como fuente de verdad para permisos, decisiones laborales o compromisos comerciales.
 
+La primera barrera ejecutable está en `src/production-guard.mjs`: rechaza capacidades sensibles en modo demo y exige aprobación humana para activarlas en producción.
+
 ## Puertas obligatorias
 
 | Puerta | Responsable | Evidencia mínima | Estado |
