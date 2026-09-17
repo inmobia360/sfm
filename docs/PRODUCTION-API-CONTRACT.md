@@ -39,6 +39,7 @@ La validación base está preparada en `src/request-context.mjs` y exige los cam
 
 - Toda mutación devuelve `requestId`, `traceId`, estado resultante y `auditEventId`.
 - Todo registro persistido incluye como mínimo `tenantId`, `divisionId`, `actorId`, `requestId`, `traceId`, `createdAt` y `updatedAt`.
+- Las lecturas sensibles también generan un evento de auditoría (`READ`); no solo las mutaciones.
 - Los handoffs conservan `messageId` y `correlationId` conforme a `docs/agents/message-envelope.md`.
 - `DENY` no revela datos del recurso; `ESCALATE` devuelve una propuesta sin ejecutarla.
 - El servidor aplica `can(actor, action, resource)` y el `approval-gate`; la UI solo muestra el resultado.
