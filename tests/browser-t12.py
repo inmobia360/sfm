@@ -4,7 +4,7 @@ from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = os.environ.get('SFM_BASE_URL', 'http://127.0.0.1:4173').rstrip('/')
-PAGES = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worker.html', 'training.html', 'report.html', 'audit.html', 'notifications.html']
+PAGES = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worker.html', 'training.html', 'report.html', 'audit.html', 'notifications.html', 'integrations.html']
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=True)
@@ -33,4 +33,4 @@ with sync_playwright() as p:
     assert any(event['actor'] == 'JAN-007' and 'checklist' in event['action'].lower() for event in state['audit'])
     assert not errors
     browser.close()
-print('BROWSER T12 TEST OK · 9 vistas · desktop/tablet/mobile · flujo worker')
+print('BROWSER T12 TEST OK · 10 vistas · desktop/tablet/mobile · flujo worker')
