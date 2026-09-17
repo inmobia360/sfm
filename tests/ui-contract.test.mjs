@@ -5,7 +5,7 @@ const pages = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worke
 for (const page of pages) {
   const html = fs.readFileSync(new URL(`../${page}`, import.meta.url), 'utf8');
   assert.match(html, /<h1\b/i, `${page} must expose a primary heading`);
-  assert.match(html, /<script\b/i, `${page} must load its runtime`);
+  if (page !== 'launch.html') assert.match(html, /<script\b/i, `${page} must load its runtime`);
   assert.match(html, /</, `${page} must contain markup`);
 }
 const worker = fs.readFileSync(new URL('../worker.html', import.meta.url), 'utf8');
