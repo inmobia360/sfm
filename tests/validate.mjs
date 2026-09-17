@@ -11,6 +11,7 @@ const required = [
 ];
 const failures = [];
 const check = (condition, message) => { if (!condition) failures.push(message); };
+check(existsSync(join(root, '.github/workflows/pages.yml')), 'Falta workflow de GitHub Pages');
  for (const file of ['src/worker-actions.mjs', 'src/payroll-actions.mjs', 'src/division-lifecycle.mjs', 'src/scheduling-rules.mjs', 'src/quality-rules.mjs', 'src/onboarding-rules.mjs', 'src/learning-rules.mjs', 'src/data-integrity.mjs', 'src/commercial-rules.mjs', 'src/employee-lifecycle.mjs', 'src/state-store.mjs', 'src/infante-delegation.mjs', 'docs/agents/operational-rules.md', 'docs/agents/INFANTE-QUEUE.md', 'tests/requirements.test.mjs', 'tests/worker-actions.test.mjs', 'tests/payroll-actions.test.mjs', 'tests/division-lifecycle.test.mjs', 'tests/scheduling-rules.test.mjs', 'tests/quality-rules.test.mjs', 'tests/onboarding-rules.test.mjs', 'tests/learning-rules.test.mjs', 'tests/catalog-coherence.test.mjs', 'tests/data-integrity.test.mjs', 'tests/commercial-rules.test.mjs', 'tests/employee-lifecycle.test.mjs', 'tests/state-store.test.mjs', 'tests/infante-delegation.test.mjs', 'tests/infante-queue.test.mjs', 'tests/shared-adapter-coherence.test.mjs']) check(existsSync(join(root, file)), `Falta artefacto de reglas o trazabilidad: ${file}`);
 
 for (const file of required) check(existsSync(join(root, file)), `Falta archivo requerido: ${file}`);
