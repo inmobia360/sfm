@@ -58,4 +58,4 @@ Hasta completar estos pasos, el MVP sigue siendo una demo sintética y no debe r
 
 `src/scoped-repository.mjs` proporciona una implementación en memoria para probar aislamiento, timestamps y commit/rollback antes de elegir una base de datos. Expone `transaction` y `transactionAsync`; ambas hacen commit únicamente si el callback termina correctamente y mantienen el ámbito tenant/división. Debe sustituirse por persistencia transaccional real en producción.
 
-`src/http-transport.mjs` separa el transporte HTTP del gobierno: requiere un resolver de identidad/contexto y delega al handler, sin considerar headers del cliente como autenticación.
+`src/production-api-handler.mjs` incluye un almacén de aprobaciones en memoria únicamente para demostrar el ciclo `PENDING_APPROVAL` → decisión humana → `READY`/`REJECTED`; en producción deberá sustituirse por aprobaciones persistentes y una identidad humana verificable. `src/http-transport.mjs` separa el transporte HTTP del gobierno: requiere un resolver de identidad/contexto y delega al handler, sin considerar headers del cliente como autenticación.

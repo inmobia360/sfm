@@ -1,8 +1,9 @@
 import { prepareGovernedAction } from './governed-action.mjs';
 import { resolveRequestContext } from './request-context.mjs';
 import { authorizeRequest } from './request-authorization.mjs';
+import { evaluateApproval } from './approval-gate.mjs';
 
-export function createProductionApiHandler({ state = {}, repository, audit = [], idempotency = new Set() } = {}) {
+export function createProductionApiHandler({ state = {}, repository, audit = [], idempotency = new Set(), approvals = new Map() } = {}) {
   const recordRead = (resolved, action) => { const now = new Date().toISOString(); const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: 'READ', requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now }; audit.push(event); return event.auditEventId; };
   return async function handle({ method = 'GET', path, context, action, resource, intent, decision, idempotencyKey } = {}) {
     const resolved = resolveRequestContext(context);
@@ -19,13 +20,29 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
       const events = audit.filter(event => event.tenantId === resolved.tenantId && event.divisionId === resolved.divisionId).map(event => ({ ...event }));
       return { status: 200, body: { events, auditEventId: recordRead(resolved, 'READ_AUDIT_EVENTS') } };
     }
+    if (method === 'POST' && path?.startsWith('/v1/approvals/')) {
+      const approvalId = path.split('/').at(-2);
+      const pending = approvals.get(approvalId);
+      if (!pending) return { status: 404, body: { error: 'APPROVAL_NOT_FOUND' } };
+      if (pending.tenantId !== resolved.tenantId || pending.divisionId !== resolved.divisionId) return { status: 403, body: { error: 'FORBIDDEN' } };
+      const approval = evaluateApproval({ intent: pending.intent, requiresHumanApproval: true }, decision);
+      if (approval.status === 'WAITING_APPROVAL') return { status: 400, body: { error: 'APPROVAL_DECISION_REQUIRED' } };
+      const status = approval.status === 'REJECTED' ? 'REJECTED' : 'READY';
+      const now = new Date().toISOString();
+      const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action: pending.action, status, approvalId, requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now };
+      audit.push(event);
+      approvals.delete(approvalId);
+      return { status: status === 'REJECTED' ? 200 : 200, body: { status, approval, approvalId, auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
+    }
     if (method !== 'POST' || !path?.startsWith('/v1/')) return { status: 404, body: { error: 'NOT_FOUND' } };
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };
     const result = prepareGovernedAction({ context: resolved, action, resource, intent, decision });
     const now = new Date().toISOString();
-    const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: result.status, requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now };
+    const approvalId = result.status === 'PENDING_APPROVAL' ? `APR-${approvals.size + 1}` : undefined;
+    const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: result.status, ...(approvalId ? { approvalId } : {}), requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now };
     audit.push(event);
+    if (approvalId) approvals.set(approvalId, { approvalId, tenantId: resolved.tenantId, divisionId: resolved.divisionId, action, intent, resource });
     if (idempotencyKey) idempotency.add(idempotencyKey);
-    return { status: result.status === 'DENIED' ? 403 : 200, body: { ...result, auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
+    return { status: result.status === 'DENIED' ? 403 : 200, body: { ...result, ...(approvalId ? { approvalId } : {}), auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
   };
 }
