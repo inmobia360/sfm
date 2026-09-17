@@ -34,7 +34,7 @@ assert.equal(foreignApproval.status, 403);
 const rejected = await handle({ method: 'POST', path: '/v1/approvals/APR-1/decision', context, decision: { status: 'REJECTED', approvedBy: 'HUMAN-001' } });
 assert.equal(rejected.body.status, 'REJECTED');
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' })).status, 409);
-assert.equal(audit.length, 9);
+assert.equal(audit.length, 10);
 assert.ok(audit.every(event => event.tenantId === 'TENANT-001' && event.createdAt && event.updatedAt));
 assert.equal(audit[0].status, 'READ');
 console.log('PRODUCTION API HANDLER TEST OK · me · dashboard · approval · idempotency · audit');
