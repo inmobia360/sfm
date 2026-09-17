@@ -18,6 +18,8 @@ assert.equal((await handle({ path: '/v1/divisions/JANITORIAL/dashboard', context
 const auditRead = await handle({ path: '/v1/audit-events', context });
 assert.equal(auditRead.status, 200);
 assert.ok(auditRead.body.events.every(event => event.tenantId === 'TENANT-001'));
+const infanteApprovals = await handle({ path: '/v1/approvals', context: { ...context, actorId: 'INFANTE', role: 'DIRECTOR' } });
+assert.equal(infanteApprovals.status, 200);
 const workerAudit = await handle({ path: '/v1/audit-events', context: { ...context, actorId: 'JAN-007', role: 'WORKER', employeeId: 'JAN-007' } });
 assert.equal(workerAudit.status, 403);
 assert.equal((await handle({ method: 'POST', path: '/v1/unsupported', context })).status, 404);
@@ -37,7 +39,7 @@ const rejected = await handle({ method: 'POST', path: '/v1/approvals/APR-2/decis
 assert.equal(rejected.body.status, 'REJECTED');
 assert.equal((await handle({ path: '/v1/approvals', context })).body.approvals.length, 0);
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' })).status, 409);
-assert.equal(audit.length, 12);
+assert.equal(audit.length, 13);
 assert.ok(audit.every(event => event.tenantId === 'TENANT-001' && event.createdAt && event.updatedAt));
 assert.equal(audit[0].status, 'READ');
 console.log('PRODUCTION API HANDLER TEST OK · me · dashboard · approval · idempotency · audit');
