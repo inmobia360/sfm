@@ -11,7 +11,13 @@ export function createDemoServer({ host = '127.0.0.1', port = 4173 } = {}) {
     if (!['GET', 'HEAD'].includes(request.method)) { response.writeHead(405, { allow: 'GET, HEAD' }); response.end(); return; }
     let pathname;
     try { pathname = decodeURIComponent(new URL(request.url, `http://${host}`).pathname); } catch { response.writeHead(400); response.end(); return; }
-    const candidate = resolve(root, `.${normalize(pathname === '/' ? '/launch.html' : pathname)}`);
+    const requestedPath = pathname === '/' ? '/launch.html' : pathname;
+    const segments = requestedPath.split('/').filter(Boolean);
+    const extension = requestedPath.slice(requestedPath.lastIndexOf('.'));
+    const publicRootFile = segments.length === 1 && Boolean(types[extension]);
+    const publicModule = segments.length === 2 && segments[0] === 'src' && extension === '.mjs';
+    if (!publicRootFile && !publicModule) { response.writeHead(404); response.end('Not found'); return; }
+    const candidate = resolve(root, `.${normalize(requestedPath)}`);
     if (relative(root, candidate).startsWith('..') || !existsSync(candidate) || !statSync(candidate).isFile()) { response.writeHead(404); response.end('Not found'); return; }
     response.writeHead(200, { 'content-type': types[candidate.slice(candidate.lastIndexOf('.'))] || 'application/octet-stream', 'cache-control': 'no-store' });
     if (request.method === 'HEAD') { response.end(); return; }

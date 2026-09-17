@@ -13,6 +13,8 @@ const moduleResponse = await fetch(`${base}/src/worker-actions.mjs`);
 assert.equal(moduleResponse.headers.get('content-type'), 'text/javascript; charset=utf-8');
   const traversal = await fetch(`${base}/%252e%252e%252fpackage.json`);
   assert.equal(traversal.status, 404);
+  const internal = await fetch(`${base}/.git/config`);
+  assert.equal(internal.status, 404);
   const method = await fetch(`${base}/launch.html`, { method: 'POST' });
   assert.equal(method.status, 405);
 } finally {
