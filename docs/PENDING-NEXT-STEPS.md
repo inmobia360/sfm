@@ -13,7 +13,7 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 ## Próximo trabajo prioritario
 
 1. T10 completado: las vistas del MVP usan el adaptador común `data.js`; mantenerlo como frontera para la futura API.
-2. T12 en curso: existe `tests/browser-t12.py` para recorrer 9 vistas en desktop/tablet/mobile y validar el flujo de trabajador. La ejecución queda pendiente porque este entorno bloquea el lanzamiento de Chromium con `WinError 5 (Acceso denegado)`; no se ha declarado T12 completado.
+2. T12 en curso: `npm run demo:serve` levanta el servidor local y `tests/browser-t12.py` recorre 9 vistas en desktop/tablet/mobile y valida el flujo de trabajador. La ejecución queda pendiente porque este entorno bloquea el lanzamiento de Chromium con `WinError 5 (Acceso denegado)`; no se ha declarado T12 completado.
 3. Ejecutar recorrido real en navegador de worker, escenarios, informe, alertas y auditoría.
 4. Verificar responsive en escritorio, tablet y móvil real.
 5. Confirmar externamente GitHub Actions y habilitar GitHub Pages manualmente desde Settings; el workflow y los checks ya están definidos, pero la URL pública no se ha verificado desde este entorno.
