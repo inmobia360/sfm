@@ -11,4 +11,6 @@ assert.equal(handle({ method: 'POST', path: '/v1/budget', context, action: 'MANA
 assert.equal(handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, decision: { status: 'APPROVED', approvedBy: 'HUMAN-001' }, idempotencyKey: 'KEY-2' }).body.status, 'READY');
 assert.equal(handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' }).status, 409);
 assert.equal(audit.length, 2);
+assert.equal(audit[0].tenantId, 'TENANT-001');
+assert.ok(audit[0].createdAt && audit[0].updatedAt);
 console.log('PRODUCTION API HANDLER TEST OK · me · dashboard · approval · idempotency · audit');
