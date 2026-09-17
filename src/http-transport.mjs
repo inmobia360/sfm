@@ -7,7 +7,8 @@ export async function handleHttpRequest({ request, response, contextResolver, ap
     const context = await contextResolver(request);
     result = await apiHandler({ method: request.method, path: url.pathname, context, ...body });
   } catch (error) {
-    result = { status: 400, body: { error: error.code || 'BAD_REQUEST' } };
+    const publicErrors = new Set(['HTTP_BODY_TOO_LARGE', 'HTTP_INVALID_JSON', 'BAD_REQUEST']);
+    result = { status: 400, body: { error: publicErrors.has(error?.code) ? error.code : 'BAD_REQUEST' } };
   }
   response.statusCode = result.status;
   response.setHeader('content-type', 'application/json; charset=utf-8');
