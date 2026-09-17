@@ -18,7 +18,7 @@
   - Hecho cuando: Janitorial activo, futuras divisiones y riesgos aparecen.
 - [x] **T9 — Integración de navegación:** enlazar lanzador a todas las vistas nuevas desde la app principal.
   - Hecho cuando: ningún entregable requiera conocer una URL manualmente.
-- [ ] **T10 — Motor de escenarios:** compartir mutaciones entre worker, escenarios, operaciones, calidad y payroll.
+- [x] **T10 — Motor de escenarios:** compartir mutaciones entre worker, escenarios, operaciones, calidad y payroll.
   - Hecho cuando: una acción en una vista cambia las métricas de las otras.
 - [x] **T11 — Reglas completas:** implementar frecuencias, conflictos, geofence y aprobaciones como funciones reutilizables.
   - Hecho cuando: cada regla de la spec tiene una prueba o evidencia ejecutable.

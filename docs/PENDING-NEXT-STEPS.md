@@ -10,7 +10,7 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 
 ## Próximo trabajo prioritario
 
-1. Completar T10: migrar las vistas restantes a un adaptador único de estado y eliminar handlers simulados duplicados.
+1. T10 completado: las vistas del MVP usan el adaptador común `data.js`; mantenerlo como frontera para la futura API.
 2. Ejecutar recorrido real en navegador de worker, escenarios, informe, alertas y auditoría.
 3. Verificar responsive en escritorio, tablet y móvil real.
 4. Confirmar GitHub Actions y habilitar GitHub Pages manualmente desde Settings.
