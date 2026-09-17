@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const publicFiles = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worker.html', 'training.html', 'report.html', 'audit.html', 'notifications.html', 'integrations.html', 'styles.css', 'data.js', 'agent-config.json'];
+export const publicFiles = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worker.html', 'training.html', 'report.html', 'audit.html', 'notifications.html', 'integrations.html', 'styles.css', 'data.js', 'agent-config.json', 'sfm-logo.png'];
 
 export function preparePages({ root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..') } = {}) {
   const output = path.join(root, 'dist');
