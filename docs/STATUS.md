@@ -33,13 +33,12 @@
 - La sincronización de demo usa `data.js`, `localStorage` y `BroadcastChannel`; no equivale todavía a consistencia server-side.
 - No hay autenticación ni backend productivo; existe un handler/transporte de prueba sin proveedor ni identidad real.
 - No hay payroll legal ni seguimiento GPS continuo.
-- La prueba Playwright headless está limitada por permisos del entorno Windows.
+- La prueba Playwright headless T12 fue ejecutada con permisos elevados y verificó las 10 vistas en escritorio, tablet y móvil; una revisión visual en dispositivo físico sigue siendo recomendable antes de una presentación externa.
 - GitHub Pages requiere habilitación manual en Settings.
 - La ejecución externa de Actions y la URL pública no se han podido verificar desde este entorno.
 
 ## Próxima prioridad técnica
 
-1. Completar la validación responsive y el recorrido real en navegador; la automatización está preparada en `tests/browser-t12.py`.
-2. Persistir el estado en un backend con autenticación, autorización por división y control de concurrencia.
-3. Completar la aprobación real de horas antes de exportar payroll y añadir pruebas de recorrido en navegador.
-4. Activar `SECURITY`, `LANDSCAPING` y otras divisiones únicamente mediante una migración de configuración revisada por `INFANTE`.
+1. Persistir el estado en un backend con autenticación, autorización por división y control de concurrencia.
+2. Completar la aprobación real de horas antes de exportar payroll y añadir pruebas de recorrido en navegador.
+3. Activar `SECURITY`, `LANDSCAPING` y otras divisiones únicamente mediante una migración de configuración revisada por `INFANTE`.
