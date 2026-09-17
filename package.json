@@ -12,6 +12,7 @@
     "test:request-authorization": "node tests/request-authorization.test.mjs",
     "test:governed-action": "node tests/governed-action.test.mjs",
     "test:api-handler": "node tests/production-api-handler.test.mjs",
+    "test:scoped-repository": "node tests/scoped-repository.test.mjs",
     "validate": "node tests/validate.mjs"
   }
 }
