@@ -20,6 +20,7 @@ assert.equal(auditRead.status, 200);
 assert.ok(auditRead.body.events.every(event => event.tenantId === 'TENANT-001'));
 const workerAudit = await handle({ path: '/v1/audit-events', context: { ...context, actorId: 'JAN-007', role: 'WORKER', employeeId: 'JAN-007' } });
 assert.equal(workerAudit.status, 403);
+assert.equal((await handle({ method: 'POST', path: '/v1/unsupported', context })).status, 404);
 const resource = { tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-001' };
 const pending = await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' });
 assert.equal(pending.body.status, 'PENDING_APPROVAL');

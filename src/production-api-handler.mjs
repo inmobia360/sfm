@@ -41,7 +41,8 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
       approvals.delete(approvalId);
       return { status: 200, body: { status, approval, approvalId, auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
     }
-    if (method !== 'POST' || !path?.startsWith('/v1/')) return { status: 404, body: { error: 'NOT_FOUND' } };
+    const supportedPost = path === '/v1/budget' || path === '/v1/attendance/events' || path === '/v1/incidents' || /^\/v1\/tasks\/[^/]+\/complete$/.test(path);
+    if (method !== 'POST' || !supportedPost) return { status: 404, body: { error: 'NOT_FOUND' } };
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };
     const result = prepareGovernedAction({ context: resolved, action, resource, intent, decision });
     const now = new Date().toISOString();
