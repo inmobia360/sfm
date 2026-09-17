@@ -113,6 +113,46 @@ select{background:var(--p);border:1px solid var(--line);border-radius:8px;paddin
 .action.primary:hover{background:linear-gradient(135deg,#ff6d3b,#f15a24);color:#ffffff;box-shadow:0 4px 14px rgba(241,90,36,0.35)}
 #toast{position:fixed;right:24px;bottom:24px;background:#ffffff;color:#0c192c;border:1px solid var(--c);padding:12px 18px;border-radius:8px;font-weight:700;font-size:12px;opacity:0;transform:translateY(20px);transition:.2s;box-shadow:0 6px 20px rgba(0,0,0,0.35)}
 #toast.show{opacity:1;transform:none}
+
+/* SFM Decision Support System (DSS) Components */
+.dss-card{background:linear-gradient(145deg,#162b48,#0e1c30);border:1px solid #2ea3f244;border-left:4px solid var(--c);border-radius:12px;padding:20px;margin-bottom:16px;box-shadow:0 8px 24px rgba(0,0,0,0.25)}
+.dss-card.urgent{border-left-color:var(--r);box-shadow:0 8px 24px rgba(239,68,68,0.15)}
+.dss-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.dss-timer{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:12px;padding:4px 9px;border-radius:6px;background:#ef444422;color:var(--r);border:1px solid #ef444455;display:inline-flex;align-items:center;gap:6px}
+.dss-provenance{display:flex;gap:12px;font-size:11px;color:var(--m);margin-bottom:14px;background:#09132277;padding:7px 12px;border-radius:6px;border:1px solid #20395c55}
+.dss-provenance span b{color:var(--t)}
+.dss-coi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0;background:#08132488;border:1px solid #20395c88;border-radius:8px;padding:12px}
+.dss-coi-col{font-size:11px}
+.dss-coi-col h5{margin:0 0 6px 0;font-size:11px;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;gap:5px}
+.dss-coi-col.econ h5{color:var(--r)}
+.dss-coi-col.ops h5{color:var(--a)}
+.dss-coi-col.work h5{color:var(--blue)}
+.dss-coi-col p{margin:0;color:var(--m);line-height:1.4}
+.dss-prescription{background:linear-gradient(135deg,#0a1a30,#102544);border:1px dashed var(--c);border-radius:8px;padding:12px 14px;margin:12px 0}
+.dss-prescription-title{font-size:11px;font-weight:700;color:var(--c);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.dss-prescription-text{font-size:13px;color:#ffffff;font-weight:600;line-height:1.45}
+.dss-action-bar{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:12px;border-top:1px solid #20395c66}
+.sparkline{display:inline-block;height:24px;vertical-align:middle}
+.trend-pill{font-size:10px;font-weight:700;padding:2px 6px;border-radius:4px;display:inline-flex;align-items:center;gap:3px}
+.trend-pill.up{background:#10b98122;color:var(--green);border:1px solid #10b98144}
+.trend-pill.down{background:#ef444422;color:var(--r);border:1px solid #ef444444}
+.ledger-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:10px}
+.ledger-table th{text-align:left;padding:8px 10px;color:var(--m);font-weight:600;font-size:11px;border-bottom:1px solid var(--line)}
+.ledger-table tr:hover td{background:#13264055}
+
+/* SFM Guided Executive Tour */
+.exec-tour-banner{background:linear-gradient(135deg,#0a1728,#0f243f);border:1px solid var(--c);border-radius:12px;padding:16px 20px;margin-bottom:24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 30px rgba(241,90,36,0.15)}
+.exec-tour-banner h4{margin:0 0 4px 0;font-size:15px;color:#ffffff;display:flex;align-items:center;gap:8px}
+.exec-tour-banner p{margin:0;font-size:12px;color:var(--m)}
+.tour-step-indicator{display:inline-flex;gap:6px;margin:0 12px}
+.tour-dot{width:8px;height:8px;border-radius:50%;background:#20395c;display:inline-block}
+.tour-dot.active{background:var(--c);box-shadow:0 0 8px var(--c)}
+.tour-dot.done{background:var(--green)}
+.tour-nav-btn{background:var(--c);color:#fff;border:none;border-radius:6px;padding:8px 16px;font-size:11px;font-weight:700;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:.15s}
+.tour-nav-btn:hover{background:#ff6d3b;transform:translateY(-1px)}
+.tour-nav-btn.secondary{background:transparent;border:1px solid var(--line);color:var(--t)}
+.tour-nav-btn.secondary:hover{border-color:var(--c);color:var(--c)}
+
 @media(max-width:850px){
   aside{width:70px;padding:20px 8px}
   .brand{margin:0 auto 25px;justify-content:center}

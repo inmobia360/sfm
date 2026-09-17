@@ -1,2 +1,169 @@
-<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SFM · Corporate Command</title><link rel="stylesheet" href="styles.css"><style>.command{max-width:1250px;margin:auto}.division-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.division{min-height:130px}.division b{display:block;font:600 18px 'Space Grotesk';margin:10px 0}.division span{color:var(--m);font-size:11px}.division.active{border-color:var(--c)}.recommendation{border-left:3px solid var(--a)}@media(max-width:850px){.division-grid{grid-template-columns:repeat(2,1fr)}}
-</style></head><body><div class="ribbon">ENTORNO DEMO · DASHBOARD CORPORATIVO · DATOS SINTÉTICOS</div><main class="command"><header><div class="header-brand"><div class="brand-logo-badge"><img src="sfm-logo.png" alt="SFM Services, Inc."></div><div><small>SFM SERVICES · INFANTE COMMAND CENTER</small><h1>Visión corporativa</h1></div></div><a class="action" href="launch.html">← Lanzador de demo</a></header><section class="hero"><div class="card"><span class="tag">PRESIDENTE · DAVID WILLIAMS</span><h2>Una compañía, varios paquetes operativos, un mismo núcleo.</h2><p class="muted">INFANTE consolida señales de las divisiones sin mezclar sus datos operativos. Janitorial está activo para el piloto; las demás divisiones están preparadas para incorporarse.</p></div><div class="card recommendation"><h3>Prioridad recomendada</h3><p class="muted">Reforzar cobertura de C-001 el jueves.</p><small class="warn">2 incidencias · 1 formación pendiente · 1 ausencia prevista</small><br><button class="action" data-msg="Recomendación enviada a JANITORIAL para aprobación">Enviar a JANITORIAL</button></div></section><section class="grid"><div class="kpi"><small>Personal</small><strong>10</strong><small class="good">Janitorial activo</small></div><div class="kpi"><small>Coste laboral</small><strong>48.2k</strong><small class="good">USD sintético / mes</small></div><div class="kpi"><small>Calidad media</small><strong>94.3 %</strong><small class="good">3 centros</small></div><div class="kpi"><small>Centros en riesgo</small><strong>1</strong><small class="warn">C-001 · atención</small></div></section><section class="card"><div class="panel-head"><h3>Mapa de divisiones</h3><small>Mismo núcleo · distinto conocimiento</small></div><div class="division-grid"><div class="card division active"><span class="tag">ACTIVO</span><b>Janitorial</b><span>Limpieza · calidad · workforce · eventos</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Security</b><span>Agentes · patrullas · licencias · fire watch</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Landscaping</b><span>Riego · poda · rutas · maquinaria</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Disaster Recovery</b><span>Emergencias · proveedores · FEMA</span></div></div></section><section class="cols"><div class="card"><h3>Riesgos consolidados</h3><div class="row"><span class="badge bad">Alto</span><div><b>Reincidencia en C-001</b><br><small class="muted">Calidad debe aprobar acción correctiva</small></div></div><div class="row"><span class="badge warn">Medio</span><div><b>Horas pendientes de revisión</b><br><small class="muted">Supervisor y payroll deben validar</small></div></div><div class="row"><span class="badge warn">Medio</span><div><b>Formación sanitaria</b><br><small class="muted">RRHH debe publicar TR-005 v2</small></div></div></div><div class="card"><h3>Gobierno de agentes</h3><div class="row"><span class="good">●</span><div><b>INFANTE · Coordinación</b><br><small class="muted">Ámbito corporativo</small></div></div><div class="row"><span class="good">●</span><div><b>JANITORIAL · Operación</b><br><small class="muted">División aislada</small></div></div><div class="row"><span class="good">●</span><div><b>CORP-DATA · Trazabilidad</b><br><small class="muted">Handoff auditable</small></div></div></div></section></main><script>document.body.onclick=e=>{if(!e.target.dataset.msg)return;const t=document.createElement('div');t.id='toast';t.className='show';t.textContent=e.target.dataset.msg;document.body.append(t);setTimeout(()=>t.remove(),2500)};</script></body></html>
+<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>SFM · Corporate Command & DSS</title><link rel="stylesheet" href="styles.css"><style>.command{max-width:1250px;margin:auto}.division-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.division{min-height:130px}.division b{display:block;font:600 18px 'Space Grotesk';margin:10px 0}.division span{color:var(--m);font-size:11px}.division.active{border-color:var(--c)}.recommendation{border-left:3px solid var(--a)}@media(max-width:850px){.division-grid{grid-template-columns:repeat(2,1fr)}}
+</style></head><body><div class="ribbon">ENTORNO DEMO · DECISION SUPPORT SYSTEM (DSS) · DATOS SINTÉTICOS</div><main class="command"><header><div class="header-brand"><div class="brand-logo-badge"><img src="sfm-logo.png" alt="SFM Services, Inc."></div><div><small>SFM SERVICES · INFANTE COMMAND CENTER</small><h1>Visión corporativa & DSS</h1></div></div><div style="display:flex;gap:10px"><a class="action" href="index.html">Abrir Panel Operativo</a><a class="action primary" href="launch.html">← Lanzador de demo</a></div></header><section class="hero"><div class="card"><span class="tag">PRESIDENTE · DAVID WILLIAMS · DSS CORE</span><h2>Una compañía, tres paquetes operativos, un mismo núcleo de decisión.</h2><p class="muted">INFANTE consolida telemetría y formula prescripciones ejecutivas con cálculo de <b>Cost of Inaction (CoI)</b> antes de que los problemas impacten la cuenta de resultados o la calidad contratada.</p></div><div class="card recommendation"><h3>Motor Prescriptivo Activo</h3><p class="muted">El sistema evalúa continuamente cuadrantes, calidad y ausencias para emitir recomendaciones cerradas.</p><small class="warn">● 2 prescripciones pendientes de decisión de INFANTE</small><br><button class="action primary" id="autoFocusRxBtn" onclick="document.querySelector('#dssSection').scrollIntoView({behavior:'smooth'})">Revisar Prescripciones ↓</button></div></section>
+
+<section class="grid">
+  <div class="kpi">
+    <small>Personal Janitorial</small>
+    <strong>10</strong>
+    <span class="trend-pill up">✓ 100% Cuadrante cubierto</span>
+  </div>
+  <div class="kpi">
+    <small>EBITDA en Riesgo (CoI)</small>
+    <strong style="color:var(--r)">2.270 €</strong>
+    <span class="trend-pill down">Mitigable vía DSS</span>
+  </div>
+  <div class="kpi">
+    <small>Calidad Media (30 días)</small>
+    <strong>94.3 %</strong>
+    <span class="trend-pill up">▲ +2.2% tendencia</span>
+  </div>
+  <div class="kpi">
+    <small>Resolución Primer Contacto</small>
+    <strong>94.8 %</strong>
+    <span class="trend-pill up">SLA cumplido</span>
+  </div>
+</section>
+
+<!-- SECCIÓN DSS: TARJETAS DE DECISIÓN PRESCRIPTIVA Y COSTE DE INACCIÓN -->
+<section class="card" id="dssSection" style="margin-bottom:20px">
+  <div class="panel-head" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+    <div>
+      <span class="tag">PRESCRIPTIVE DECISION CARDS · QUÉ DEBE DECIDIR INFANTE</span>
+      <h3 style="margin:4px 0 0 0">Decisiones Ejecutivas Prioritarias</h3>
+    </div>
+    <small class="muted">Basado en telemetría en tiempo real · Gobernanza con human-in-the-loop</small>
+  </div>
+  <div id="prescriptionsContainer"></div>
+</section>
+
+<!-- SECCIÓN DSS: HISTÓRICO DE DECISIONES Y AUDITORÍA DE RESULTADOS (DECISION LEDGER) -->
+<section class="card" style="margin-bottom:20px">
+  <div class="panel-head" style="display:flex;justify-content:space-between;align-items:center">
+    <div>
+      <span class="tag">DECISION LEDGER · RETORNO DE LA INVERSIÓN (ROI)</span>
+      <h3 style="margin:4px 0 0 0">Registro Histórico de Decisiones y Resultados Reales</h3>
+    </div>
+    <small class="good">Verificación a 7/14/30 días activa</small>
+  </div>
+  <p class="muted" style="margin-top:6px">Trazabilidad inmutable de decisiones tomadas por la dirección, comparando el impacto proyectado con el resultado real medido.</p>
+  <div style="overflow-x:auto">
+    <table class="ledger-table">
+      <thead>
+        <tr>
+          <th>FECHA / ID</th>
+          <th>ACTOR</th>
+          <th>DECISIÓN ADOPTADA</th>
+          <th>IMPACTO ESTIMADO</th>
+          <th>RESULTADO MEDIDO</th>
+          <th>AHORRO NETO</th>
+          <th>ESTADO</th>
+        </tr>
+      </thead>
+      <tbody id="ledgerTableBody"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="card"><div class="panel-head"><h3>Mapa de divisiones</h3><small>Mismo núcleo · distinto conocimiento</small></div><div class="division-grid"><div class="card division active"><span class="tag">ACTIVO</span><b>Janitorial</b><span>Limpieza · calidad · workforce · eventos</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Security</b><span>Agentes · patrullas · licencias · fire watch</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Landscaping</b><span>Riego · poda · rutas · maquinaria</span></div><div class="card division"><span class="badge warn">PRÓXIMAMENTE</span><b>Disaster Recovery</b><span>Emergencias · proveedores · FEMA</span></div></div></section><section class="cols"><div class="card"><h3>Riesgos consolidados</h3><div class="row"><span class="badge bad">Alto</span><div><b>Reincidencia en C-001</b><br><small class="muted">Calidad debe aprobar acción correctiva</small></div></div><div class="row"><span class="badge warn">Medio</span><div><b>Horas pendientes de revisión</b><br><small class="muted">Supervisor y payroll deben validar</small></div></div><div class="row"><span class="badge warn">Medio</span><div><b>Formación sanitaria</b><br><small class="muted">RRHH debe publicar TR-005 v2</small></div></div></div><div class="card"><h3>Gobierno de agentes</h3><div class="row"><span class="good">●</span><div><b>INFANTE · Coordinación</b><br><small class="muted">Ámbito corporativo</small></div></div><div class="row"><span class="good">●</span><div><b>JANITORIAL · Operación</b><br><small class="muted">División aislada</small></div></div><div class="row"><span class="good">●</span><div><b>CORP-DATA · Trazabilidad</b><br><small class="muted">Handoff auditable</small></div></div></div></section></main><div id="toast" role="status"></div>
+<script src="data.js"></script>
+<script>
+let sfm = sfmLoad();
+
+function renderDSS() {
+  const container = document.querySelector('#prescriptionsContainer');
+  const ledgerTbody = document.querySelector('#ledgerTableBody');
+  
+  // Render Prescriptions
+  if (!sfm.prescriptions || sfm.prescriptions.length === 0) {
+    container.innerHTML = '<p class="muted">No hay prescripciones pendientes en este momento.</p>';
+  } else {
+    container.innerHTML = sfm.prescriptions.map(rx => `
+      <div class="dss-card ${rx.urgency === 'Crítica' ? 'urgent' : ''}">
+        <div class="dss-header">
+          <div>
+            <span class="badge ${rx.urgency === 'Crítica' ? 'bad' : 'warn'}">${rx.urgency.toUpperCase()}</span>
+            <strong style="margin-left:8px;font-size:15px">${rx.title}</strong>
+          </div>
+          <div class="dss-timer">⏱ SLA: ${rx.slaTimerMinutes} min restantes</div>
+        </div>
+        
+        <div class="dss-provenance">
+          <span><b>Objetivo:</b> ${rx.target}</span>
+          <span><b>Fuente:</b> ${rx.provenance}</span>
+          <span><b>Confianza de IA:</b> <span class="good">${rx.confidenceScore}%</span></span>
+        </div>
+
+        <div class="dss-coi-grid">
+          <div class="dss-coi-col econ">
+            <h5>💰 Coste Inacción Económico</h5>
+            <p>${rx.coi.financial}</p>
+          </div>
+          <div class="dss-coi-col ops">
+            <h5>⚡ Impacto Operativo</h5>
+            <p>${rx.coi.operational}</p>
+          </div>
+          <div class="dss-coi-col work">
+            <h5>👥 Impacto Laboral & PRL</h5>
+            <p>${rx.coi.workforce}</p>
+          </div>
+        </div>
+
+        <div class="dss-prescription">
+          <div class="dss-prescription-title">🎯 Qué debe decidir Infante (Recomendación Prescriptiva)</div>
+          <div class="dss-prescription-text">${rx.recommendation}</div>
+        </div>
+
+        <div class="dss-action-bar">
+          <small class="muted">Riesgo Financiero Máximo: <b style="color:var(--r)">${rx.coi.financialRiskEur} €</b></small>
+          <div>
+            ${rx.status === 'Adoptada' 
+              ? '<span class="badge good" style="font-size:12px;padding:6px 12px">✓ Decisión Adoptada y Ejecutada</span>' 
+              : `<button class="action primary" data-adopt="${rx.id}">${rx.suggestedAction} →</button>`
+            }
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Render Decision Ledger
+  if (sfm.decisionLedger && sfm.decisionLedger.length > 0) {
+    ledgerTbody.innerHTML = sfm.decisionLedger.map(row => `
+      <tr>
+        <td><b>${row.id}</b><br><small class="muted">${row.date}</small></td>
+        <td><span class="badge blue">${row.actor}</span></td>
+        <td style="max-width:260px"><b>${row.decision}</b></td>
+        <td style="color:var(--m);font-size:11px">${row.estimatedImpact}</td>
+        <td style="color:var(--t);font-size:11px"><span class="good">●</span> ${row.measuredOutcome}</td>
+        <td><strong class="good">+${row.netSavingsEur} €</strong></td>
+        <td><span class="badge good">${row.status}</span></td>
+      </tr>
+    `).join('');
+  }
+}
+
+document.body.onclick = e => {
+  const btn = e.target.closest('[data-adopt]');
+  if (btn) {
+    const rxId = btn.dataset.adopt;
+    sfmAdoptPrescription(sfm, rxId, 'INFANTE');
+    sfm = sfmLoad();
+    renderDSS();
+    showToast(`Decisión ejecutada: Prescripción ${rxId} adoptada y auditada.`);
+    return;
+  }
+  if (!e.target.dataset.msg) return;
+  showToast(e.target.dataset.msg);
+};
+
+function showToast(msg) {
+  const t = document.querySelector('#toast');
+  t.className = 'show';
+  t.textContent = msg;
+  setTimeout(() => t.className = '', 3000);
+}
+
+renderDSS();
+sfmSubscribe(next => { sfm = next; renderDSS(); });
+</script></body></html>
+
