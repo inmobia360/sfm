@@ -21,6 +21,8 @@ Cada request autenticada debe resolver antes de leer o mutar recursos:
 
 El servidor debe rechazar un contexto incompleto y nunca confiar en `divisionId`, `siteIds` o `employeeId` enviados por la interfaz sin resolverlos desde la identidad y sus asignaciones.
 
+La validación base está preparada en `src/request-context.mjs` y exige los campos obligatorios, un rol reconocido, alcance de centros y el aislamiento del trabajador sobre su propio `employeeId`.
+
 ## Endpoints iniciales
 
 | Método | Ruta | Alcance | Aprobación |
