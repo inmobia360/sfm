@@ -2,7 +2,7 @@
 
 ## GitHub Pages
 
-El repositorio contiene `.github/workflows/pages.yml`, que publica el contenido estático de `main`.
+El repositorio contiene `.github/workflows/pages.yml`, que genera y publica desde `main` un artefacto allowlisted en `dist/`; no sube documentación, pruebas ni el directorio Git.
 
 Para habilitarlo una sola vez en GitHub:
 
@@ -16,10 +16,13 @@ La demo no necesita variables de entorno, API keys ni servidor backend.
 ## Comprobación local
 
 ```powershell
-python -m http.server 4173
+npm run prepare:pages
+npm run demo:serve
 ```
 
 Después abrir `http://127.0.0.1:4173/launch.html`.
+
+`npm run prepare:pages` deja una copia inspeccionable del artefacto público en `dist/`. El servidor demo sirve el proyecto raíz para conservar las rutas de desarrollo; Pages utiliza exclusivamente `dist/`.
 
 ## Límites
 
