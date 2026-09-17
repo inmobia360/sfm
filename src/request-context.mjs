@@ -1,5 +1,5 @@
 const REQUIRED = ['tenantId', 'actorId', 'role', 'divisionId', 'requestId', 'traceId'];
-const ROLES = new Set(['DIRECTOR', 'CEO', 'SUPERVISOR', 'HR', 'QUALITY', 'PAYROLL', 'WORKER']);
+const ROLES = new Set(['DIRECTOR', 'CEO', 'SUPERVISOR', 'HR', 'QUALITY', 'PAYROLL', 'SPECIALIST', 'WORKER']);
 
 export function resolveRequestContext(input = {}) {
   const missing = REQUIRED.filter(field => !input[field]);

@@ -21,4 +21,5 @@ jobs:
       - run: npm run test:production-guard
       - run: npm run test:api-contract
       - run: npm run test:request-context
+      - run: npm run test:request-authorization
       - run: npm run validate

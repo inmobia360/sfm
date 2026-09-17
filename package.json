@@ -9,6 +9,7 @@
     "test:production-guard": "node tests/production-guard.test.mjs",
     "test:api-contract": "node tests/api-contract-doc.test.mjs",
     "test:request-context": "node tests/request-context.test.mjs",
+    "test:request-authorization": "node tests/request-authorization.test.mjs",
     "validate": "node tests/validate.mjs"
   }
 }
