@@ -18,4 +18,5 @@ jobs:
         with:
           node-version: 20
       - run: npm test
+      - run: npm run test:production-guard
       - run: npm run validate
