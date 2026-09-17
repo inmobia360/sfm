@@ -10,5 +10,7 @@ assert.match(pages, /branches:\s*\[main\]/);
 assert.match(pages, /pages:\s+write/);
 assert.match(pages, /id-token:\s+write/);
 assert.match(pages, /actions\/deploy-pages@v4/);
+assert.match(pages, /scripts\/prepare-pages\.mjs/);
+assert.match(pages, /path: dist/);
 assert.doesNotMatch(ci, /secrets\./i);
 console.log('WORKFLOW SAFETY TEST OK · CI · Pages · permissions · scope');

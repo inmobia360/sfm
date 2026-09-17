@@ -18,9 +18,10 @@
     "test:demo-safety": "node tests/demo-safety.test.mjs",
     "test:ui-contract": "node tests/ui-contract.test.mjs",
     "test:demo-server": "node tests/demo-server.test.mjs",
+    "test:pages-artifact": "node tests/pages-artifact.test.mjs",
     "test:decision-gate": "node tests/production-decision-gate.test.mjs",
     "demo:serve": "node scripts/demo-server.mjs",
-    "test:all": "npm test && npm run test:api-contract && npm run test:request-context && npm run test:request-authorization && npm run test:governed-action && npm run test:api-handler && npm run test:scoped-repository && npm run test:workflow-safety && npm run test:demo-safety && npm run test:ui-contract && npm run test:demo-server && npm run test:decision-gate && npm run test:http-transport",
+    "test:all": "npm test && npm run test:api-contract && npm run test:request-context && npm run test:request-authorization && npm run test:governed-action && npm run test:api-handler && npm run test:scoped-repository && npm run test:workflow-safety && npm run test:demo-safety && npm run test:ui-contract && npm run test:demo-server && npm run test:pages-artifact && npm run test:decision-gate && npm run test:http-transport",
     "validate": "node tests/validate.mjs"
   }
 }
