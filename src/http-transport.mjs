@@ -1,9 +1,14 @@
 export async function handleHttpRequest({ request, response, contextResolver, apiHandler }) {
   if (typeof contextResolver !== 'function' || typeof apiHandler !== 'function') throw new Error('HTTP_TRANSPORT_DEPENDENCIES_REQUIRED');
   const url = new URL(request.url, 'http://localhost');
-  const body = request.method === 'POST' ? await readJson(request) : {};
-  const context = await contextResolver(request);
-  const result = apiHandler({ method: request.method, path: url.pathname, context, ...body });
+  let result;
+  try {
+    const body = request.method === 'POST' ? await readJson(request) : {};
+    const context = await contextResolver(request);
+    result = apiHandler({ method: request.method, path: url.pathname, context, ...body });
+  } catch (error) {
+    result = { status: 400, body: { error: error.code || 'BAD_REQUEST' } };
+  }
   response.statusCode = result.status;
   response.setHeader('content-type', 'application/json; charset=utf-8');
   response.end(JSON.stringify(result.body));

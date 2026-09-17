@@ -8,4 +8,7 @@ const response = { headers: {}, setHeader(key, value) { this.headers[key] = valu
 const result = await handleHttpRequest({ request, response, contextResolver: async () => context, apiHandler: input => ({ status: 200, body: { path: input.path, actor: input.context.actorId } }) });
 assert.equal(result.status, 200); assert.equal(JSON.parse(response.body).actor, 'JANITORIAL'); assert.equal(response.headers['content-type'], 'application/json; charset=utf-8');
 await assert.rejects(() => handleHttpRequest({ request, response, apiHandler: () => ({ status: 200, body: {} }) }), /DEPENDENCIES_REQUIRED/);
+const badResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
+const bad = await handleHttpRequest({ request, badResponse, response: badResponse, contextResolver: async () => { throw new Error('internal context detail'); }, apiHandler: () => ({ status: 200, body: {} }) });
+assert.equal(bad.status, 400); assert.equal(JSON.parse(badResponse.body).error, 'BAD_REQUEST');
 console.log('HTTP TRANSPORT TEST OK · resolver explícito · JSON · delegación segura');
