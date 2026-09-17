@@ -35,8 +35,8 @@
 - No hay autenticación ni backend productivo; existe un handler/transporte de prueba sin proveedor ni identidad real.
 - No hay payroll legal ni seguimiento GPS continuo.
 - La prueba Playwright headless T12 fue ejecutada con permisos elevados y verificó las 10 vistas en escritorio, tablet y móvil; una revisión visual en dispositivo físico sigue siendo recomendable antes de una presentación externa.
-- GitHub Pages requiere habilitación manual en Settings.
-- La ejecución externa de Actions y la URL pública no se han podido verificar desde este entorno.
+- GitHub Pages requiere habilitación manual en Settings; la URL pública devuelve 404 mientras no se configure.
+- Verificación externa actual: CI pasa en `e0ef590`; Pages falla en `Configure Pages` antes de generar el artefacto (run `35200960879`).
 
 ## Próxima prioridad técnica
 
