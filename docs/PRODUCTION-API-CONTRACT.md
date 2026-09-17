@@ -33,6 +33,7 @@ La validación base está preparada en `src/request-context.mjs` y exige los cam
 | POST | `/v1/tasks/{taskId}/complete` | tarea del empleado/centro autorizado | revisión supervisor |
 | POST | `/v1/incidents` | incidencia del ámbito permitido | crítica: calidad |
 | POST | `/v1/approvals/{approvalId}/decision` | recurso pendiente de aprobación | persona autorizada |
+| GET | `/v1/approvals` | aprobaciones pendientes del ámbito | no |
 | GET | `/v1/audit-events` | eventos del tenant según rol | no |
 
 ## Reglas de respuesta

@@ -21,6 +21,12 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
       const events = audit.filter(event => event.tenantId === resolved.tenantId && event.divisionId === resolved.divisionId).map(event => ({ ...event }));
       return { status: 200, body: { events, auditEventId: recordRead(resolved, 'READ_AUDIT_EVENTS') } };
     }
+    if (method === 'GET' && path === '/v1/approvals') {
+      const authorization = authorizeRequest({ context: resolved, action: 'VIEW_AUDIT', resource: { tenantId: resolved.tenantId, divisionId: resolved.divisionId } });
+      if (authorization.decision === 'DENY') return { status: 403, body: { error: 'FORBIDDEN' } };
+      const pending = [...approvals.values()].filter(item => item.tenantId === resolved.tenantId && item.divisionId === resolved.divisionId).map(item => ({ ...item }));
+      return { status: 200, body: { approvals: pending, auditEventId: recordRead(resolved, 'READ_PENDING_APPROVALS') } };
+    }
     if (method === 'POST' && path?.startsWith('/v1/approvals/')) {
       const approvalId = path.split('/').at(-2);
       const pending = approvals.get(approvalId);
@@ -33,7 +39,7 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
       const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action: pending.action, status, approvalId, requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now };
       audit.push(event);
       approvals.delete(approvalId);
-      return { status: status === 'REJECTED' ? 200 : 200, body: { status, approval, approvalId, auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
+      return { status: 200, body: { status, approval, approvalId, auditEventId: event.auditEventId, requestId: resolved.requestId, traceId: resolved.traceId } };
     }
     if (method !== 'POST' || !path?.startsWith('/v1/')) return { status: 404, body: { error: 'NOT_FOUND' } };
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };

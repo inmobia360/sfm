@@ -24,6 +24,7 @@ const resource = { tenantId: 'TENANT-001', divisionId: 'JANITORIAL', siteId: 'C-
 const pending = await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' });
 assert.equal(pending.body.status, 'PENDING_APPROVAL');
 assert.equal(pending.body.approvalId, 'APR-1');
+assert.equal((await handle({ path: '/v1/approvals', context })).body.approvals.length, 1);
 const approved = await handle({ method: 'POST', path: '/v1/approvals/APR-1/decision', context, decision: { status: 'APPROVED', approvedBy: 'HUMAN-001' } });
 assert.equal(approved.body.status, 'READY');
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, decision: { status: 'APPROVED', approvedBy: 'HUMAN-001' }, idempotencyKey: 'KEY-2' })).body.status, 'READY');
@@ -33,8 +34,9 @@ const foreignApproval = await handle({ method: 'POST', path: '/v1/approvals/APR-
 assert.equal(foreignApproval.status, 403);
 const rejected = await handle({ method: 'POST', path: '/v1/approvals/APR-2/decision', context, decision: { status: 'REJECTED', approvedBy: 'HUMAN-001' } });
 assert.equal(rejected.body.status, 'REJECTED');
+assert.equal((await handle({ path: '/v1/approvals', context })).body.approvals.length, 0);
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' })).status, 409);
-assert.equal(audit.length, 10);
+assert.equal(audit.length, 12);
 assert.ok(audit.every(event => event.tenantId === 'TENANT-001' && event.createdAt && event.updatedAt));
 assert.equal(audit[0].status, 'READ');
 console.log('PRODUCTION API HANDLER TEST OK · me · dashboard · approval · idempotency · audit');
