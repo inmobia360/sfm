@@ -4,6 +4,7 @@ import { authorizeRequest } from './request-authorization.mjs';
 import { evaluateApproval } from './approval-gate.mjs';
 
 export function createProductionApiHandler({ state = {}, repository, audit = [], idempotency = new Set(), approvals = new Map() } = {}) {
+  let nextApprovalId = approvals.size + 1;
   const recordRead = (resolved, action) => { const now = new Date().toISOString(); const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: 'READ', requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now }; audit.push(event); return event.auditEventId; };
   return async function handle({ method = 'GET', path, context, action, resource, intent, decision, idempotencyKey } = {}) {
     const resolved = resolveRequestContext(context);
@@ -38,7 +39,7 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };
     const result = prepareGovernedAction({ context: resolved, action, resource, intent, decision });
     const now = new Date().toISOString();
-    const approvalId = result.status === 'PENDING_APPROVAL' ? `APR-${approvals.size + 1}` : undefined;
+    const approvalId = result.status === 'PENDING_APPROVAL' ? `APR-${nextApprovalId++}` : undefined;
     const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: result.status, ...(approvalId ? { approvalId } : {}), requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now };
     audit.push(event);
     if (approvalId) approvals.set(approvalId, { approvalId, tenantId: resolved.tenantId, divisionId: resolved.divisionId, action, intent, resource });

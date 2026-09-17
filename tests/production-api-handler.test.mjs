@@ -28,10 +28,10 @@ const approved = await handle({ method: 'POST', path: '/v1/approvals/APR-1/decis
 assert.equal(approved.body.status, 'READY');
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, decision: { status: 'APPROVED', approvedBy: 'HUMAN-001' }, idempotencyKey: 'KEY-2' })).body.status, 'READY');
 const pendingReject = await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-3' });
-assert.equal(pendingReject.body.approvalId, 'APR-1');
-const foreignApproval = await handle({ method: 'POST', path: '/v1/approvals/APR-1/decision', context: { ...context, tenantId: 'TENANT-002' }, decision: { status: 'APPROVED', approvedBy: 'HUMAN-002' } });
+assert.equal(pendingReject.body.approvalId, 'APR-2');
+const foreignApproval = await handle({ method: 'POST', path: '/v1/approvals/APR-2/decision', context: { ...context, tenantId: 'TENANT-002' }, decision: { status: 'APPROVED', approvedBy: 'HUMAN-002' } });
 assert.equal(foreignApproval.status, 403);
-const rejected = await handle({ method: 'POST', path: '/v1/approvals/APR-1/decision', context, decision: { status: 'REJECTED', approvedBy: 'HUMAN-001' } });
+const rejected = await handle({ method: 'POST', path: '/v1/approvals/APR-2/decision', context, decision: { status: 'REJECTED', approvedBy: 'HUMAN-001' } });
 assert.equal(rejected.body.status, 'REJECTED');
 assert.equal((await handle({ method: 'POST', path: '/v1/budget', context, action: 'MANAGE_BUDGET', intent: 'REQUEST_BUDGET', resource, idempotencyKey: 'KEY-1' })).status, 409);
 assert.equal(audit.length, 10);
