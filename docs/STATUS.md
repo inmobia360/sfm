@@ -23,6 +23,7 @@
 - Estado compartido entre vistas mediante `localStorage` y `BroadcastChannel`.
 - Runtime enlazado con `agent-config.json` y validación de topología por capas.
 - Matriz ejecutable de trazabilidad `RF-01` a `RF-20`.
+- Contrato documentado para sustituir el repositorio en memoria por persistencia productiva, sin proveedor elegido.
 - Reglas operativas testeadas para fichaje, checklist e incidencias.
 - Reglas testeadas para onboarding, Employee 360, agenda, calidad, formación IA, payroll y compromisos comerciales.
 - Escenarios, auditoría, alertas, informe y formación conectados al estado común de la demo.
