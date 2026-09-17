@@ -13,6 +13,7 @@
     "test:governed-action": "node tests/governed-action.test.mjs",
     "test:api-handler": "node tests/production-api-handler.test.mjs",
     "test:scoped-repository": "node tests/scoped-repository.test.mjs",
+    "test:workflow-safety": "node tests/workflow-safety.test.mjs",
     "test:all": "npm test && npm run test:api-contract && npm run test:request-context && npm run test:request-authorization && npm run test:governed-action && npm run test:api-handler && npm run test:scoped-repository",
     "validate": "node tests/validate.mjs"
   }
