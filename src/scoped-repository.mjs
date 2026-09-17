@@ -10,14 +10,15 @@ export function createScopedRepository({ records = [] } = {}) {
     append(context, record) {
       const resolved = resolveRequestContext(context);
       if (!isResourceInContext(resolved, record)) throw new Error('REPOSITORY_SCOPE_DENIED');
-      const saved = { ...record, tenantId: resolved.tenantId, divisionId: resolved.divisionId };
+      const now = new Date().toISOString();
+      const saved = { ...record, tenantId: resolved.tenantId, divisionId: resolved.divisionId, createdAt: record.createdAt || now, updatedAt: now };
       store.push(saved);
       return { ...saved };
     },
     transaction(context, callback) {
       const resolved = resolveRequestContext(context);
       const working = store.map(record => ({ ...record }));
-      const tx = { list: (predicate = () => true) => working.filter(record => isResourceInContext(resolved, record) && predicate(record)).map(record => ({ ...record })), append: record => { if (!isResourceInContext(resolved, record)) throw new Error('REPOSITORY_SCOPE_DENIED'); const saved = { ...record, tenantId: resolved.tenantId, divisionId: resolved.divisionId }; working.push(saved); return { ...saved }; } };
+      const tx = { list: (predicate = () => true) => working.filter(record => isResourceInContext(resolved, record) && predicate(record)).map(record => ({ ...record })), append: record => { if (!isResourceInContext(resolved, record)) throw new Error('REPOSITORY_SCOPE_DENIED'); const now = new Date().toISOString(); const saved = { ...record, tenantId: resolved.tenantId, divisionId: resolved.divisionId, createdAt: record.createdAt || now, updatedAt: now }; working.push(saved); return { ...saved }; } };
       const result = callback(tx);
       store = working;
       return result;
