@@ -17,12 +17,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - run: npm test
-      - run: npm run test:production-guard
-      - run: npm run test:api-contract
-      - run: npm run test:request-context
-      - run: npm run test:request-authorization
-      - run: npm run test:governed-action
-      - run: npm run test:api-handler
-      - run: npm run test:scoped-repository
+      - run: npm run test:all
       - run: npm run validate

@@ -20,7 +20,7 @@ Las reglas reutilizables están en `src/`: onboarding, trabajador, agenda, calid
 
 ## Verificación
 
-Con Node.js instalado, ejecutar `npm test` para la batería principal, `npm run test:api-contract`, `npm run test:request-context`, `npm run test:request-authorization` y `npm run test:governed-action` para las fronteras productivas, y `npm run validate` para comprobar la topología completa del MVP. El servidor estático puede iniciarse con `python -m http.server 4173`.
+Con Node.js instalado, ejecutar `npm run test:all` para la batería completa (MVP y fronteras productivas), y `npm run validate` para comprobar la topología completa del MVP. `npm test` mantiene la batería principal. El servidor estático puede iniciarse con `python -m http.server 4173`.
 
 ## Vistas de demostración
 
