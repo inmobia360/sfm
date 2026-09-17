@@ -11,4 +11,7 @@ await assert.rejects(() => handleHttpRequest({ request, response, apiHandler: ()
 const badResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
 const bad = await handleHttpRequest({ request, badResponse, response: badResponse, contextResolver: async () => { throw new Error('internal context detail'); }, apiHandler: () => ({ status: 200, body: {} }) });
 assert.equal(bad.status, 400); assert.equal(JSON.parse(badResponse.body).error, 'BAD_REQUEST');
+const notFoundResponse = { headers: {}, setHeader(key, value) { this.headers[key] = value; }, end(value) { this.body = value; } };
+const notFound = await handleHttpRequest({ request: Object.assign(new EventEmitter(), { method: 'GET', url: '/v1/unknown' }), response: notFoundResponse, contextResolver: async () => context, apiHandler: () => ({ status: 404, body: { error: 'NOT_FOUND' } }) });
+assert.equal(notFound.status, 404);
 console.log('HTTP TRANSPORT TEST OK · resolver explícito · JSON · delegación segura');

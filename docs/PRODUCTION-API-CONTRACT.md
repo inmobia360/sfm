@@ -43,6 +43,7 @@ La validación base está preparada en `src/request-context.mjs` y exige los cam
 - `DENY` no revela datos del recurso; `ESCALATE` devuelve una propuesta sin ejecutarla.
 - El servidor aplica `can(actor, action, resource)` y el `approval-gate`; la UI solo muestra el resultado.
 - Las operaciones sensibles deben ser idempotentes mediante una clave de idempotencia.
+- Errores previstos: `400` para request/contexto inválido, `403` para denegación, `404` para ruta no soportada y `409` para clave de idempotencia reutilizada. Las respuestas de error no exponen detalles internos.
 
 ## Orden de implementación
 
