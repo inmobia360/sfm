@@ -5,7 +5,7 @@ export async function handleHttpRequest({ request, response, contextResolver, ap
   try {
     const body = request.method === 'POST' ? await readJson(request) : {};
     const context = await contextResolver(request);
-    result = apiHandler({ method: request.method, path: url.pathname, context, ...body });
+    result = await apiHandler({ method: request.method, path: url.pathname, context, ...body });
   } catch (error) {
     result = { status: 400, body: { error: error.code || 'BAD_REQUEST' } };
   }
