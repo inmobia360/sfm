@@ -1,12 +1,15 @@
 import { prepareGovernedAction } from './governed-action.mjs';
 import { resolveRequestContext } from './request-context.mjs';
 
-export function createProductionApiHandler({ state = {}, audit = [], idempotency = new Set() } = {}) {
+export function createProductionApiHandler({ state = {}, repository, audit = [], idempotency = new Set() } = {}) {
   return function handle({ method = 'GET', path, context, action, resource, intent, decision, idempotencyKey } = {}) {
     const resolved = resolveRequestContext(context);
     if (method === 'GET' && path === '/v1/me') return { status: 200, body: { context: resolved } };
     if (method === 'GET' && path === `/v1/divisions/${resolved.divisionId}/dashboard`) {
-      return { status: 200, body: { divisionId: resolved.divisionId, employees: state.employees?.length || 0, sites: state.sites?.length || 0, synthetic: true } };
+      const scoped = repository ? repository.list(resolved) : [...(state.employees || []), ...(state.sites || [])].filter(record => record.tenantId === resolved.tenantId && record.divisionId === resolved.divisionId);
+      const employees = repository ? repository.list(resolved, record => record.kind === 'employee').length : scoped.filter(record => record.kind === 'employee').length;
+      const sites = repository ? repository.list(resolved, record => record.kind === 'site').length : scoped.filter(record => record.kind === 'site').length;
+      return { status: 200, body: { divisionId: resolved.divisionId, employees, sites, synthetic: true } };
     }
     if (method !== 'POST' || !path?.startsWith('/v1/')) return { status: 404, body: { error: 'NOT_FOUND' } };
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };
