@@ -13,7 +13,7 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 ## Próximo trabajo prioritario
 
 1. T10 completado: las vistas del MVP usan el adaptador común `data.js`; mantenerlo como frontera para la futura API.
-2. T12 parcialmente verificado: `npm run demo:serve` levanta el servidor local; el navegador integrado recorrió las 9 vistas y confirmó el layout sin overflow en el viewport disponible, incluyendo la corrección de `index.html`. Sigue pendiente el recorrido automatizado completo desktop/tablet/mobile y el flujo interactivo del trabajador porque Playwright no puede lanzar Chromium en este entorno (`WinError 5`); no se ha declarado T12 completado.
+2. T12 parcialmente verificado: `npm run demo:serve` levanta el servidor local; el navegador integrado recorrió las 9 vistas, confirmó el layout sin overflow en el viewport disponible y ejecutó el flujo del trabajador (fichaje, 5/5 checks y envío a revisión). Sigue pendiente el recorrido automatizado completo desktop/tablet/mobile porque Playwright no puede lanzar Chromium en este entorno (`WinError 5`); no se ha declarado T12 completado.
 3. Ejecutar recorrido real en navegador de worker, escenarios, informe, alertas y auditoría.
 4. Verificar responsive en escritorio, tablet y móvil real.
 5. Confirmar externamente GitHub Actions y habilitar GitHub Pages manualmente desde Settings; el workflow y los checks ya están definidos, pero la URL pública no se ha verificado desde este entorno.
