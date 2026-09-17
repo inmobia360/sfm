@@ -10,6 +10,7 @@
     "test:api-contract": "node tests/api-contract-doc.test.mjs",
     "test:request-context": "node tests/request-context.test.mjs",
     "test:request-authorization": "node tests/request-authorization.test.mjs",
+    "test:governed-action": "node tests/governed-action.test.mjs",
     "validate": "node tests/validate.mjs"
   }
 }
