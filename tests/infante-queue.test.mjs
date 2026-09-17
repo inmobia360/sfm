@@ -3,7 +3,7 @@ import fs from 'node:fs';
 
 const text = fs.readFileSync(new URL('../docs/agents/INFANTE-QUEUE.md', import.meta.url), 'utf8');
 const rows = text.split('\n').filter(line => line.startsWith('| MSG-'));
-assert.equal(rows.length, 3);
+assert.equal(rows.length, 4);
 const ids = rows.map(row => row.split('|')[1].trim());
 assert.equal(new Set(ids).size, ids.length);
 for (const row of rows) {

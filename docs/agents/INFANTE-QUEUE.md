@@ -7,6 +7,7 @@ Cola activa del MVP. Cada entrada sigue el sobre de mensajes y requiere revisió
 | MSG-T10-001 | FLOW-T10-STATE | SHARE_VIEW_MUTATIONS | HIGH | `JANITORIAL`; vistas worker, operaciones, calidad y payroll | `DEV-ARCHITECTURE` + `DEV-FRONTEND` | Las mutaciones permitidas se leen desde un adaptador común y aparecen en auditoría sin duplicar handlers |
 | MSG-T12-001 | FLOW-T12-BROWSER | VALIDATE_DEMO_JOURNEY | NORMAL | Datos sintéticos; desktop/tablet/mobile | `DEV-QUALITY-TEST` | Recorrido RF-01..RF-20 documentado con evidencias y sin errores críticos |
 | MSG-PROD-001 | FLOW-PROD-BOUNDARY | PREPARE_PRODUCTION_BOUNDARY | NORMAL | No activar producción; sin datos reales | `DEV-SECURITY` + `CORP-GOVERNANCE` | Checklist de backend, autenticación, aislamiento, RGPD/AI Act y aprobaciones humanas revisado |
+| MSG-API-001 | FLOW-PROD-API | DEFINE_API_CONTRACT | NORMAL | Contrato server-side; sin proveedor ni datos reales | `DEV-ARCHITECTURE` + `DEV-DATA` + `DEV-SECURITY` | Contexto tenant/división, autorización, auditoría, idempotencia y endpoints iniciales validados |
 
 ## Estado
 
