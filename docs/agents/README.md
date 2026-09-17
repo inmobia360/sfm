@@ -27,3 +27,5 @@ La regla de diseño es: **un núcleo común de gobierno y trazabilidad, con divi
 - Microsoft Copilot Studio: agentes principales, agentes conectados, handoffs explícitos, contexto limitado y gobierno.
 
 Estas referencias sirven como patrones conceptuales; no implican adoptar esas plataformas.
+
+La frontera técnica para pasar de la demo a un sistema productivo está documentada en `../PRODUCTION-BOUNDARY.md` y `../PRODUCTION-API-CONTRACT.md`; ninguna persona o agente debe interpretar la demo local como autenticación o autorización server-side.

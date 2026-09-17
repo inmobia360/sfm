@@ -8,6 +8,8 @@ Abrir `index.html` en un navegador. No requiere instalación, API keys ni servic
 
 La estructura de agentes y el roadmap están en `docs/agents/`.
 
+La transición a backend está definida, pero no activada: consulta `docs/PRODUCTION-BOUNDARY.md` y `docs/PRODUCTION-API-CONTRACT.md`. El MVP no usa autenticación productiva ni datos reales.
+
 El núcleo ejecutable se compone con `createAgentSystem()` desde `src/agent-system.mjs`; integra registry, routing, autorización, approval gate, bus, auditoría, alertas y dispatch. Su contrato de extensión está documentado en `docs/agents/runtime-guide.md`.
 
 ## Composición actual
@@ -18,7 +20,7 @@ Las reglas reutilizables están en `src/`: onboarding, trabajador, agenda, calid
 
 ## Verificación
 
-Con Node.js instalado, ejecutar `npm test` para las pruebas del sobre de mensajes, routing y estados de tareas, y `npm run validate` para comprobar la topología completa del MVP. El servidor estático puede iniciarse con `python -m http.server 4173`.
+Con Node.js instalado, ejecutar `npm test` para la batería principal, `npm run test:api-contract`, `npm run test:request-context`, `npm run test:request-authorization` y `npm run test:governed-action` para las fronteras productivas, y `npm run validate` para comprobar la topología completa del MVP. El servidor estático puede iniciarse con `python -m http.server 4173`.
 
 ## Vistas de demostración
 
