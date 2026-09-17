@@ -1,5 +1,6 @@
 import { prepareGovernedAction } from './governed-action.mjs';
 import { resolveRequestContext } from './request-context.mjs';
+import { authorizeRequest } from './request-authorization.mjs';
 
 export function createProductionApiHandler({ state = {}, repository, audit = [], idempotency = new Set() } = {}) {
   const recordRead = (resolved, action) => { const now = new Date().toISOString(); const event = { auditEventId: `AUD-${audit.length + 1}`, tenantId: resolved.tenantId, actorId: resolved.actorId, divisionId: resolved.divisionId, action, status: 'READ', requestId: resolved.requestId, traceId: resolved.traceId, createdAt: now, updatedAt: now }; audit.push(event); return event.auditEventId; };
@@ -11,6 +12,12 @@ export function createProductionApiHandler({ state = {}, repository, audit = [],
       const employees = repository ? (await repository.list(resolved, record => record.kind === 'employee')).length : scoped.filter(record => record.kind === 'employee').length;
       const sites = repository ? (await repository.list(resolved, record => record.kind === 'site')).length : scoped.filter(record => record.kind === 'site').length;
       return { status: 200, body: { divisionId: resolved.divisionId, employees, sites, synthetic: true, auditEventId: recordRead(resolved, 'READ_DIVISION_DASHBOARD') } };
+    }
+    if (method === 'GET' && path === '/v1/audit-events') {
+      const authorization = authorizeRequest({ context: resolved, action: 'VIEW_AUDIT', resource: { tenantId: resolved.tenantId, divisionId: resolved.divisionId } });
+      if (authorization.decision === 'DENY') return { status: 403, body: { error: 'FORBIDDEN' } };
+      const events = audit.filter(event => event.tenantId === resolved.tenantId && event.divisionId === resolved.divisionId).map(event => ({ ...event }));
+      return { status: 200, body: { events, auditEventId: recordRead(resolved, 'READ_AUDIT_EVENTS') } };
     }
     if (method !== 'POST' || !path?.startsWith('/v1/')) return { status: 404, body: { error: 'NOT_FOUND' } };
     if (idempotencyKey && idempotency.has(idempotencyKey)) return { status: 409, body: { error: 'IDEMPOTENCY_KEY_REUSED' } };
