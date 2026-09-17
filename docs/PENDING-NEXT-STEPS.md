@@ -16,6 +16,7 @@ El MVP demo incluye Employee 360, onboarding, trabajador, escenarios, formación
 4. Verificar responsive en escritorio, tablet y móvil real.
 5. Confirmar externamente GitHub Actions y habilitar GitHub Pages manualmente desde Settings; el workflow y los checks ya están definidos, pero la URL pública no se ha verificado desde este entorno.
 6. Para producción: seguir `docs/PRODUCTION-BOUNDARY.md` antes de conectar datos o servicios reales.
+7. Backend: usar `docs/PRODUCTION-API-CONTRACT.md` como contrato inicial antes de elegir proveedor o base de datos.
 
 ## Comandos de reanudación
 
