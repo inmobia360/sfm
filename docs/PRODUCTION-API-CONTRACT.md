@@ -21,7 +21,7 @@ Cada request autenticada debe resolver antes de leer o mutar recursos:
 
 El servidor debe rechazar un contexto incompleto y nunca confiar en `divisionId`, `siteIds` o `employeeId` enviados por la interfaz sin resolverlos desde la identidad y sus asignaciones.
 
-La validación base está preparada en `src/request-context.mjs` y exige los campos obligatorios, un rol reconocido, alcance de centros y el aislamiento del trabajador sobre su propio `employeeId`. `src/request-authorization.mjs` compone esa validación con `can(...)` y devuelve `DENY`, `ALLOW` o `ESCALATE` antes de ejecutar una acción. `src/governed-action.mjs` convierte la escalada en `PENDING_APPROVAL` y solo devuelve `READY` después de una decisión humana válida.
+La validación base está preparada en `src/request-context.mjs` y exige los campos obligatorios, un rol reconocido, alcance de centros y el aislamiento del trabajador sobre su propio `employeeId`. `src/request-authorization.mjs` compone esa validación con `can(...)` y devuelve `DENY`, `ALLOW` o `ESCALATE` antes de ejecutar una acción. `src/governed-action.mjs` convierte la escalada en `PENDING_APPROVAL` y solo devuelve `READY` después de una decisión humana válida. `src/production-api-handler.mjs` ofrece un handler agnóstico de transporte para probar este contrato con respuestas, idempotencia y audit event; no es todavía un servidor productivo.
 
 ## Endpoints iniciales
 
