@@ -21,7 +21,7 @@
 | RF-17 | `scenarios.html` y `launch.html` | Verificado |
 | RF-18 | `audit.html` y mutaciones de `data.js` | Verificado visual |
 | RF-19 | `ceo.html` e `integrations.html` | Verificado visual |
-| RF-20 | CSS responsive y vistas móviles; `tests/browser-t12.py` preparado | Ejecución visual pendiente por bloqueo de Chromium en este entorno |
+| RF-20 | CSS responsive y vistas móviles; `tests/browser-t12.py` ejecutado en 1440×900, 768×1024 y 390×844 | Verificado automáticamente; revisión física recomendable |
 
 ## Interpretación
 
@@ -29,7 +29,6 @@
 
 ## Pendientes críticos
 
-1. Ejecutar el recorrido real del navegador cuando Chromium esté disponible.
-2. Verificar responsive en un dispositivo móvil real.
-3. Habilitar GitHub Pages en el repositorio y confirmar la URL pública.
-4. Diseñar backend, autenticación y aislamiento productivo conforme a `docs/PRODUCTION-BOUNDARY.md`.
+1. Verificar responsive en un dispositivo móvil físico antes de una presentación externa.
+2. Habilitar GitHub Pages en el repositorio y confirmar la URL pública.
+3. Diseñar backend, autenticación y aislamiento productivo conforme a `docs/PRODUCTION-BOUNDARY.md`.

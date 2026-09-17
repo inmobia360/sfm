@@ -22,5 +22,5 @@
   - Hecho cuando: una acción en una vista cambia las métricas de las otras.
 - [x] **T11 — Reglas completas:** implementar frecuencias, conflictos, geofence y aprobaciones como funciones reutilizables.
   - Hecho cuando: cada regla de la spec tiene una prueba o evidencia ejecutable.
-- [ ] **T12 — Validación final:** recorrido responsive y RF-01 a RF-20.
+- [x] **T12 — Validación final:** recorrido responsive y RF-01 a RF-20.
   - Hecho cuando: existe matriz de evidencia y no quedan fallos críticos.
