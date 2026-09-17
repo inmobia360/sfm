@@ -1,7 +1,9 @@
+import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT = Path(__file__).resolve().parents[1]
+BASE_URL = os.environ.get('SFM_BASE_URL', 'http://127.0.0.1:4173').rstrip('/')
 PAGES = ['launch.html', 'index.html', 'ceo.html', 'scenarios.html', 'worker.html', 'training.html', 'report.html', 'audit.html', 'notifications.html']
 
 with sync_playwright() as p:
@@ -11,14 +13,14 @@ with sync_playwright() as p:
         errors = []
         page.on('pageerror', lambda error: errors.append(str(error)))
         for name in PAGES:
-            page.goto((ROOT / name).as_uri(), wait_until='networkidle')
+            page.goto(f'{BASE_URL}/{name}', wait_until='networkidle')
             assert page.locator('body').is_visible(), name
             assert page.locator('h1').count() >= 1, name
             assert page.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth'), f'{name} overflows at {width}px'
         page.close()
 
     page = browser.new_page(viewport={'width': 390, 'height': 844})
-    page.goto((ROOT / 'worker.html').as_uri(), wait_until='networkidle')
+    page.goto(f'{BASE_URL}/worker.html', wait_until='networkidle')
     page.evaluate("localStorage.removeItem('sfm-demo-state-v1')")
     page.reload(wait_until='networkidle')
     page.locator('#clock').click()
