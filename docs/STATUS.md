@@ -31,7 +31,7 @@
 
 - La selección de rol aún es principalmente de demostración.
 - La sincronización de demo usa `data.js`, `localStorage` y `BroadcastChannel`; no equivale todavía a consistencia server-side.
-- No hay autenticación ni backend.
+- No hay autenticación ni backend productivo; existe un handler/transporte de prueba sin proveedor ni identidad real.
 - No hay payroll legal ni seguimiento GPS continuo.
 - La prueba Playwright headless está limitada por permisos del entorno Windows.
 - GitHub Pages requiere habilitación manual en Settings.
